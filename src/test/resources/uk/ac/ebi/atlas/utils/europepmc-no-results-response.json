@@ -1,0 +1,16 @@
+{
+  "_comment": "The original request for this example response is https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:%22%22&format=json",
+  "version": "6.8",
+  "hitCount": 0,
+  "request": {
+    "queryString": "DOI:\"\"",
+    "resultType": "lite",
+    "cursorMark": "*",
+    "pageSize": 25,
+    "sort": "",
+    "synonym": false
+  },
+  "resultList": {
+    "result": []
+  }
+}

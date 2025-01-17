@@ -1,0 +1,3 @@
+INSERT INTO collections(coll_id, name, description, icon) VALUES ('HCA', 'Human Cell Atlas', 'Experiments from the Human Cell Atlas (HCA) initiative', NULL);
+INSERT INTO collections(coll_id, name, description, icon) VALUES ('MCA', 'Malaria Cell Atlas', 'Experiments from the Malaria Cell Atlas project by the Wellcome Sanger Institute', NULL);
+INSERT INTO collections(coll_id, name, description, icon) VALUES ('CZB', 'Chan Zuckerberg Biohub', 'Experiments supported by Chan Zuckerberg Biohub', NULL);

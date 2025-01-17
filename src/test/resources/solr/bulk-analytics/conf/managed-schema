@@ -1,0 +1,1058 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Solr managed schema - automatically generated - DO NOT EDIT -->
+<schema name="default-config" version="1.6">
+  <uniqueKey>id</uniqueKey>
+  <fieldType name="ancestor_path" class="solr.TextField">
+    <analyzer type="index">
+      <tokenizer class="solr.KeywordTokenizerFactory"/>
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.PathHierarchyTokenizerFactory" delimiter="/"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="binary" class="solr.BinaryField"/>
+  <fieldType name="boolean" class="solr.BoolField" sortMissingLast="true"/>
+  <fieldType name="booleans" class="solr.BoolField" sortMissingLast="true" multiValued="true"/>
+  <fieldType name="delimited_payloads_float" class="solr.TextField" indexed="true" stored="false">
+    <analyzer>
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+      <filter class="solr.DelimitedPayloadTokenFilterFactory" encoder="float"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="delimited_payloads_int" class="solr.TextField" indexed="true" stored="false">
+    <analyzer>
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+      <filter class="solr.DelimitedPayloadTokenFilterFactory" encoder="integer"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="delimited_payloads_string" class="solr.TextField" indexed="true" stored="false">
+    <analyzer>
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+      <filter class="solr.DelimitedPayloadTokenFilterFactory" encoder="identity"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="descendent_path" class="solr.TextField">
+    <analyzer type="index">
+      <tokenizer class="solr.PathHierarchyTokenizerFactory" delimiter="/"/>
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.KeywordTokenizerFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="location" class="solr.LatLonPointSpatialField" docValues="true"/>
+  <fieldType name="location_rpt" class="solr.SpatialRecursivePrefixTreeFieldType" geo="true" maxDistErr="0.001" distErrPct="0.025" distanceUnits="kilometers"/>
+  <fieldType name="lowercase" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.KeywordTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="pdate" class="solr.DatePointField" docValues="true"/>
+  <fieldType name="pdates" class="solr.DatePointField" docValues="true" multiValued="true"/>
+  <fieldType name="pdouble" class="solr.DoublePointField" docValues="true"/>
+  <fieldType name="pdoubles" class="solr.DoublePointField" docValues="true" multiValued="true"/>
+  <fieldType name="pfloat" class="solr.FloatPointField" docValues="true"/>
+  <fieldType name="pfloats" class="solr.FloatPointField" docValues="true" multiValued="true"/>
+  <fieldType name="phonetic_en" class="solr.TextField" indexed="true" stored="false">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.DoubleMetaphoneFilterFactory" inject="false"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="pint" class="solr.IntPointField" docValues="true"/>
+  <fieldType name="pints" class="solr.IntPointField" docValues="true" multiValued="true"/>
+  <fieldType name="plong" class="solr.LongPointField" docValues="true"/>
+  <fieldType name="plongs" class="solr.LongPointField" docValues="true" multiValued="true"/>
+  <fieldType name="point" class="solr.PointType" subFieldSuffix="_d" dimension="2"/>
+  <fieldType name="string" class="solr.StrField" sortMissingLast="true" docValues="true"/>
+  <fieldType name="strings" class="solr.StrField" sortMissingLast="true" docValues="true" multiValued="true"/>
+  <fieldType name="text_ar" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_ar.txt" ignoreCase="true"/>
+      <filter class="solr.ArabicNormalizationFilterFactory"/>
+      <filter class="solr.ArabicStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_bg" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_bg.txt" ignoreCase="true"/>
+      <filter class="solr.BulgarianStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_ca" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.ElisionFilterFactory" articles="lang/contractions_ca.txt" ignoreCase="true"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_ca.txt" ignoreCase="true"/>
+      <filter class="solr.SnowballPorterFilterFactory" language="Catalan"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_cjk" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.CJKWidthFilterFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.CJKBigramFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_cz" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_cz.txt" ignoreCase="true"/>
+      <filter class="solr.CzechStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_da" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" format="snowball" words="lang/stopwords_da.txt" ignoreCase="true"/>
+      <filter class="solr.SnowballPorterFilterFactory" language="Danish"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_de" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" format="snowball" words="lang/stopwords_de.txt" ignoreCase="true"/>
+      <filter class="solr.GermanNormalizationFilterFactory"/>
+      <filter class="solr.GermanLightStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_el" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.GreekLowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_el.txt" ignoreCase="false"/>
+      <filter class="solr.GreekStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_en" class="solr.TextField" positionIncrementGap="100">
+    <analyzer type="index">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_en.txt" ignoreCase="true"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.EnglishPossessiveFilterFactory"/>
+      <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+      <filter class="solr.PorterStemFilterFactory"/>
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.SynonymGraphFilterFactory" expand="true" ignoreCase="true" synonyms="synonyms.txt"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_en.txt" ignoreCase="true"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.EnglishPossessiveFilterFactory"/>
+      <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+      <filter class="solr.PorterStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_en_splitting" class="solr.TextField" autoGeneratePhraseQueries="true" positionIncrementGap="100">
+    <analyzer type="index">
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_en.txt" ignoreCase="true"/>
+      <filter class="solr.WordDelimiterGraphFilterFactory" catenateNumbers="1" generateNumberParts="1" splitOnCaseChange="1" generateWordParts="1" catenateAll="0" catenateWords="1"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+      <filter class="solr.PorterStemFilterFactory"/>
+      <filter class="solr.FlattenGraphFilterFactory"/>
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+      <filter class="solr.SynonymGraphFilterFactory" expand="true" ignoreCase="true" synonyms="synonyms.txt"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_en.txt" ignoreCase="true"/>
+      <filter class="solr.WordDelimiterGraphFilterFactory" catenateNumbers="0" generateNumberParts="1" splitOnCaseChange="1" generateWordParts="1" catenateAll="0" catenateWords="0"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+      <filter class="solr.PorterStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_en_splitting_tight" class="solr.TextField" autoGeneratePhraseQueries="true" positionIncrementGap="100">
+    <analyzer type="index">
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+      <filter class="solr.SynonymGraphFilterFactory" expand="false" ignoreCase="true" synonyms="synonyms.txt"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_en.txt" ignoreCase="true"/>
+      <filter class="solr.WordDelimiterGraphFilterFactory" catenateNumbers="1" generateNumberParts="0" generateWordParts="0" catenateAll="0" catenateWords="1"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+      <filter class="solr.EnglishMinimalStemFilterFactory"/>
+      <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+      <filter class="solr.FlattenGraphFilterFactory"/>
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+      <filter class="solr.SynonymGraphFilterFactory" expand="false" ignoreCase="true" synonyms="synonyms.txt"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_en.txt" ignoreCase="true"/>
+      <filter class="solr.WordDelimiterGraphFilterFactory" catenateNumbers="1" generateNumberParts="0" generateWordParts="0" catenateAll="0" catenateWords="1"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+      <filter class="solr.EnglishMinimalStemFilterFactory"/>
+      <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_en_tight" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.EnglishPossessiveFilterFactory"/>
+      <filter class="solr.PorterStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_es" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" format="snowball" words="lang/stopwords_es.txt" ignoreCase="true"/>
+      <filter class="solr.SpanishLightStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_eu" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_eu.txt" ignoreCase="true"/>
+      <filter class="solr.SnowballPorterFilterFactory" language="Basque"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_fa" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <charFilter class="solr.PersianCharFilterFactory"/>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.ArabicNormalizationFilterFactory"/>
+      <filter class="solr.PersianNormalizationFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_fa.txt" ignoreCase="true"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_fi" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" format="snowball" words="lang/stopwords_fi.txt" ignoreCase="true"/>
+      <filter class="solr.SnowballPorterFilterFactory" language="Finnish"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_fr" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.ElisionFilterFactory" articles="lang/contractions_fr.txt" ignoreCase="true"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" format="snowball" words="lang/stopwords_fr.txt" ignoreCase="true"/>
+      <filter class="solr.FrenchLightStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_ga" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.ElisionFilterFactory" articles="lang/contractions_ga.txt" ignoreCase="true"/>
+      <filter class="solr.StopFilterFactory" words="lang/hyphenations_ga.txt" ignoreCase="true"/>
+      <filter class="solr.IrishLowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_ga.txt" ignoreCase="true"/>
+      <filter class="solr.SnowballPorterFilterFactory" language="Irish"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100" multiValued="true">
+    <analyzer type="index">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.StopFilterFactory" words="stopwords.txt" ignoreCase="true"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.StopFilterFactory" words="stopwords.txt" ignoreCase="true"/>
+      <filter class="solr.SynonymGraphFilterFactory" expand="true" ignoreCase="true" synonyms="synonyms.txt"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_general_rev" class="solr.TextField" positionIncrementGap="100">
+    <analyzer type="index">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.StopFilterFactory" words="stopwords.txt" ignoreCase="true"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.ReversedWildcardFilterFactory" maxPosQuestion="2" maxFractionAsterisk="0.33" maxPosAsterisk="3" withOriginal="true"/>
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.SynonymGraphFilterFactory" expand="true" ignoreCase="true" synonyms="synonyms.txt"/>
+      <filter class="solr.StopFilterFactory" words="stopwords.txt" ignoreCase="true"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_gl" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_gl.txt" ignoreCase="true"/>
+      <filter class="solr.GalicianStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_hi" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.IndicNormalizationFilterFactory"/>
+      <filter class="solr.HindiNormalizationFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_hi.txt" ignoreCase="true"/>
+      <filter class="solr.HindiStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_hu" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" format="snowball" words="lang/stopwords_hu.txt" ignoreCase="true"/>
+      <filter class="solr.SnowballPorterFilterFactory" language="Hungarian"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_hy" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_hy.txt" ignoreCase="true"/>
+      <filter class="solr.SnowballPorterFilterFactory" language="Armenian"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_id" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_id.txt" ignoreCase="true"/>
+      <filter class="solr.IndonesianStemFilterFactory" stemDerivational="true"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_it" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.ElisionFilterFactory" articles="lang/contractions_it.txt" ignoreCase="true"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" format="snowball" words="lang/stopwords_it.txt" ignoreCase="true"/>
+      <filter class="solr.ItalianLightStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_ja" class="solr.TextField" autoGeneratePhraseQueries="false" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.JapaneseTokenizerFactory" mode="search"/>
+      <filter class="solr.JapaneseBaseFormFilterFactory"/>
+      <filter class="solr.JapanesePartOfSpeechStopFilterFactory" tags="lang/stoptags_ja.txt"/>
+      <filter class="solr.CJKWidthFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_ja.txt" ignoreCase="true"/>
+      <filter class="solr.JapaneseKatakanaStemFilterFactory" minimumLength="4"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_lv" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_lv.txt" ignoreCase="true"/>
+      <filter class="solr.LatvianStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_nl" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" format="snowball" words="lang/stopwords_nl.txt" ignoreCase="true"/>
+      <filter class="solr.StemmerOverrideFilterFactory" dictionary="lang/stemdict_nl.txt" ignoreCase="false"/>
+      <filter class="solr.SnowballPorterFilterFactory" language="Dutch"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_no" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" format="snowball" words="lang/stopwords_no.txt" ignoreCase="true"/>
+      <filter class="solr.SnowballPorterFilterFactory" language="Norwegian"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_pt" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" format="snowball" words="lang/stopwords_pt.txt" ignoreCase="true"/>
+      <filter class="solr.PortugueseLightStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_ro" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_ro.txt" ignoreCase="true"/>
+      <filter class="solr.SnowballPorterFilterFactory" language="Romanian"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_ru" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" format="snowball" words="lang/stopwords_ru.txt" ignoreCase="true"/>
+      <filter class="solr.SnowballPorterFilterFactory" language="Russian"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_sv" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" format="snowball" words="lang/stopwords_sv.txt" ignoreCase="true"/>
+      <filter class="solr.SnowballPorterFilterFactory" language="Swedish"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_th" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.ThaiTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_th.txt" ignoreCase="true"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_tr" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.TurkishLowerCaseFilterFactory"/>
+      <filter class="solr.StopFilterFactory" words="lang/stopwords_tr.txt" ignoreCase="false"/>
+      <filter class="solr.SnowballPorterFilterFactory" language="Turkish"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_ws" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+    </analyzer>
+  </fieldType>
+  <field name="AAO_definition_citation_annotation" type="text_general"/>
+  <field name="ABA_definition_citation_annotation" type="text_general"/>
+  <field name="AEO_definition_citation_annotation" type="text_general"/>
+  <field name="ANISEED_definition_citation_annotation" type="text_general"/>
+  <field name="APweb_definition_citation_annotation" type="text_general"/>
+  <field name="ATCC_definition_citation_annotation" type="text_general"/>
+  <field name="ATC_code_definition_citation_annotation" type="text_general"/>
+  <field name="ArrayExpress_label_annotation" type="text_general"/>
+  <field name="BAMS_definition_citation_annotation" type="text_general"/>
+  <field name="BAO_definition_citation_annotation" type="text_general"/>
+  <field name="BFO_definition_citation_annotation" type="text_general"/>
+  <field name="BILA_definition_citation_annotation" type="text_general"/>
+  <field name="BILS_definition_citation_annotation" type="text_general"/>
+  <field name="BIRNLEX_definition_citation_annotation" type="text_general"/>
+  <field name="BM_definition_citation_annotation" type="text_general"/>
+  <field name="BTO_definition_citation_annotation" type="text_general"/>
+  <field name="Beilstein_definition_citation_annotation" type="text_general"/>
+  <field name="BilaDO_definition_citation_annotation" type="text_general"/>
+  <field name="CALOHA_definition_citation_annotation" type="text_general"/>
+  <field name="CARO_definition_citation_annotation" type="text_general"/>
+  <field name="CASRN_definition_citation_annotation" type="text_general"/>
+  <field name="CLO_definition_citation_annotation" type="text_general"/>
+  <field name="CL_definition_citation_annotation" type="text_general"/>
+  <field name="CMO_definition_citation_annotation" type="text_general"/>
+  <field name="COMe_definition_citation_annotation" type="text_general"/>
+  <field name="ChEBI_definition_citation_annotation" type="text_general"/>
+  <field name="ChEMBL_definition_citation_annotation" type="text_general"/>
+  <field name="ChemIDplus_definition_citation_annotation" type="text_general"/>
+  <field name="CiteXplore_definition_citation_annotation" type="text_general"/>
+  <field name="Coriell_definition_citation_annotation" type="text_general"/>
+  <field name="DHBA_definition_citation_annotation" type="text_general"/>
+  <field name="DMBA_definition_citation_annotation" type="text_general"/>
+  <field name="DOID_definition_citation_annotation" type="text_general"/>
+  <field name="DSSTox_CID_definition_citation_annotation" type="text_general"/>
+  <field name="DSSTox_Generic_SID_definition_citation_annotation" type="text_general"/>
+  <field name="DrerDO_definition_citation_annotation" type="text_general"/>
+  <field name="DrugBank_definition_citation_annotation" type="text_general"/>
+  <field name="EFO_URI_annotation" type="text_general"/>
+  <field name="EFO_definition_citation_annotation" type="text_general"/>
+  <field name="EHDAA2_RETIRED_definition_citation_annotation" type="text_general"/>
+  <field name="EHDAA2_definition_citation_annotation" type="text_general"/>
+  <field name="EHDAA_definition_citation_annotation" type="text_general"/>
+  <field name="EHDA_definition_citation_annotation" type="text_general"/>
+  <field name="EMAPA_RETIRED_definition_citation_annotation" type="text_general"/>
+  <field name="EMAPA_definition_citation_annotation" type="text_general"/>
+  <field name="ENVO_definition_citation_annotation" type="text_general"/>
+  <field name="ERO_definition_citation_annotation" type="text_general"/>
+  <field name="EVM_definition_citation_annotation" type="text_general"/>
+  <field name="EV_definition_citation_annotation" type="text_general"/>
+  <field name="FAO_definition_citation_annotation" type="text_general"/>
+  <field name="FBbt_definition_citation_annotation" type="text_general"/>
+  <field name="FBdv_definition_citation_annotation" type="text_general"/>
+  <field name="FBtc_definition_citation_annotation" type="text_general"/>
+  <field name="FMA_definition_citation_annotation" type="text_general"/>
+  <field name="GAID_definition_citation_annotation" type="text_general"/>
+  <field name="GOC_definition_citation_annotation" type="text_general"/>
+  <field name="GO_definition_citation_annotation" type="text_general"/>
+  <field name="Germplasm_definition_citation_annotation" type="text_general"/>
+  <field name="Gmelin_definition_citation_annotation" type="text_general"/>
+  <field name="HAO_definition_citation_annotation" type="text_general"/>
+  <field name="HBA_definition_citation_annotation" type="text_general"/>
+  <field name="HMDB_definition_citation_annotation" type="text_general"/>
+  <field name="HP_definition_citation_annotation" type="text_general"/>
+  <field name="HsapDv_definition_citation_annotation" type="text_general"/>
+  <field name="IAO_0000119_annotation" type="text_general"/>
+  <field name="ICD10_definition_citation_annotation" type="text_general"/>
+  <field name="ICD9CM_definition_citation_annotation" type="text_general"/>
+  <field name="ICD9_definition_citation_annotation" type="text_general"/>
+  <field name="IDOMAL_definition_citation_annotation" type="text_general"/>
+  <field name="IDO_definition_citation_annotation" type="text_general"/>
+  <field name="ISBN_definition_citation_annotation" type="text_general"/>
+  <field name="InChIKey_annotation" type="text_general"/>
+  <field name="InChI_annotation" type="text_general"/>
+  <field name="JAX_definition_citation_annotation" type="text_general"/>
+  <field name="KEGG_COMPOUND_definition_citation_annotation" type="text_general"/>
+  <field name="KEGG_DRUG_definition_citation_annotation" type="text_general"/>
+  <field name="KUPO_definition_citation_annotation" type="text_general"/>
+  <field name="MAP_definition_citation_annotation" type="text_general"/>
+  <field name="MAT_definition_citation_annotation" type="text_general"/>
+  <field name="MA_definition_citation_annotation" type="text_general"/>
+  <field name="MBA_definition_citation_annotation" type="text_general"/>
+  <field name="MCC_definition_citation_annotation" type="text_general"/>
+  <field name="MFO_definition_citation_annotation" type="text_general"/>
+  <field name="MIAA_definition_citation_annotation" type="text_general"/>
+  <field name="MONDO_definition_citation_annotation" type="text_general"/>
+  <field name="MO_definition_citation_annotation" type="text_general"/>
+  <field name="MP_definition_citation_annotation" type="text_general"/>
+  <field name="MSH_definition_citation_annotation" type="text_general"/>
+  <field name="MedDRA_definition_citation_annotation" type="text_general"/>
+  <field name="MedlinePlus_definition_citation_annotation" type="text_general"/>
+  <field name="MetaCyc_definition_citation_annotation" type="text_general"/>
+  <field name="MmusDv_definition_citation_annotation" type="text_general"/>
+  <field name="MolBase_definition_citation_annotation" type="text_general"/>
+  <field name="NCI_Metathesaurus_definition_citation_annotation" type="text_general"/>
+  <field name="NCI_Thesaurus_definition_citation_annotation" type="text_general"/>
+  <field name="NIFSTD_definition_citation_annotation" type="text_general"/>
+  <field name="NIF_Cell_definition_citation_annotation" type="text_general"/>
+  <field name="NIF_GrossAnatomy_RETIRED_definition_citation_annotation" type="text_general"/>
+  <field name="NIF_GrossAnatomy_definition_citation_annotation" type="text_general"/>
+  <field name="NIF_Subcellular_definition_citation_annotation" type="text_general"/>
+  <field name="NIST_Chemistry_WebBook_definition_citation_annotation" type="text_general"/>
+  <field name="NeuroNames_definition_citation_annotation" type="text_general"/>
+  <field name="OAE_definition_citation_annotation" type="text_general"/>
+  <field name="OBI_definition_citation_annotation" type="text_general"/>
+  <field name="OGEM_definition_citation_annotation" type="text_general"/>
+  <field name="OGES_definition_citation_annotation" type="text_general"/>
+  <field name="OMIM_definition_citation_annotation" type="text_general"/>
+  <field name="ORDO_definition_citation_annotation" type="text_general"/>
+  <field name="OpenCyc_definition_citation_annotation" type="text_general"/>
+  <field name="PATO_definition_citation_annotation" type="text_general"/>
+  <field name="PBA_definition_citation_annotation" type="text_general"/>
+  <field name="PDB_definition_citation_annotation" type="text_general"/>
+  <field name="PDBeChem_definition_citation_annotation" type="text_general"/>
+  <field name="PERSON_definition_citation_annotation" type="text_general"/>
+  <field name="PMID_definition_citation_annotation" type="text_general"/>
+  <field name="PO_definition_citation_annotation" type="text_general"/>
+  <field name="PRO_definition_citation_annotation" type="text_general"/>
+  <field name="Patent_definition_citation_annotation" type="text_general"/>
+  <field name="PdumDv_definition_citation_annotation" type="text_general"/>
+  <field name="RESID_definition_citation_annotation" type="text_general"/>
+  <field name="RETIRED_EHDAA2_definition_citation_annotation" type="text_general"/>
+  <field name="RGD_definition_citation_annotation" type="text_general"/>
+  <field name="RO_0001900_annotation" type="text_general"/>
+  <field name="RO_0002175_annotation" type="text_general"/>
+  <field name="Reactome_definition_citation_annotation" type="text_general"/>
+  <field name="Reaxys_definition_citation_annotation" type="text_general"/>
+  <field name="SAEL_definition_citation_annotation" type="text_general"/>
+  <field name="SMILES_annotation" type="text_general"/>
+  <field name="SNOMEDCT_definition_citation_annotation" type="text_general"/>
+  <field name="SPD_definition_citation_annotation" type="text_general"/>
+  <field name="SRA_label_annotation" type="text_general"/>
+  <field name="STRUCTURE_ChemicalName_IUPAC_definition_citation_annotation" type="text_general"/>
+  <field name="STRUCTURE_Formula_definition_citation_annotation" type="text_general"/>
+  <field name="SUBMITTER_definition_citation_annotation" type="text_general"/>
+  <field name="TADS_definition_citation_annotation" type="text_general"/>
+  <field name="TAO_definition_citation_annotation" type="text_general"/>
+  <field name="TE_definition_citation_annotation" type="text_general"/>
+  <field name="TGMA_definition_citation_annotation" type="text_general"/>
+  <field name="TO_definition_citation_annotation" type="text_general"/>
+  <field name="UBERON_definition_citation_annotation" type="text_general"/>
+  <field name="UBPROP_0000011_annotation" type="text_general"/>
+  <field name="UM-BBD_definition_citation_annotation" type="text_general"/>
+  <field name="UMLS_definition_citation_annotation" type="text_general"/>
+  <field name="UniProt_definition_citation_annotation" type="text_general"/>
+  <field name="VHOG_definition_citation_annotation" type="text_general"/>
+  <field name="VO_definition_citation_annotation" type="text_general"/>
+  <field name="VSAO_definition_citation_annotation" type="text_general"/>
+  <field name="WBbt_definition_citation_annotation" type="text_general"/>
+  <field name="WBls_definition_citation_annotation" type="text_general"/>
+  <field name="WebElements_definition_citation_annotation" type="text_general"/>
+  <field name="Wikipedia_definition_citation_annotation" type="text_general"/>
+  <field name="XAO_definition_citation_annotation" type="text_general"/>
+  <field name="XtroDO_definition_citation_annotation" type="text_general"/>
+  <field name="ZEA_definition_citation_annotation" type="text_general"/>
+  <field name="ZFA_definition_citation_annotation" type="text_general"/>
+  <field name="ZFS_definition_citation_annotation" type="text_general"/>
+  <field name="_root_" type="string" docValues="false" indexed="true" stored="false"/>
+  <field name="_text_" type="text_general" multiValued="true" indexed="true" stored="false"/>
+  <field name="_version_" type="plong" indexed="false" stored="false"/>
+  <field name="ancestor_uris" type="text_general"/>
+  <field name="assay_group_id" type="string" docValues="true"/>
+  <field name="axiom_lost_from_external_ontology_annotation" type="text_general"/>
+  <field name="bearer_of_rel" type="text_general"/>
+  <field name="bioentity_identifier" type="string" docValues="true"/>
+  <field name="bioentity_identifier_search" type="lowercase"/>
+  <field name="bioportal_provenance_annotation" type="text_general"/>
+  <field name="branch_class_annotation" type="booleans"/>
+  <field name="capable_of_rel" type="text_general"/>
+  <field name="charge_annotation" type="plongs"/>
+  <field name="child_uris" type="text_general"/>
+  <field name="comment_annotation" type="text_general"/>
+  <field name="composed_primarily_of_rel" type="text_general"/>
+  <field name="conditions_search" type="text_en_tight" stored="false"/>
+  <field name="contrast_id" type="string"/>
+  <field name="createdBy_annotation" type="text_general"/>
+  <field name="created_by_annotation" type="text_general"/>
+  <field name="creation_date_annotation" type="pdates"/>
+  <field name="creator_annotation" type="text_general"/>
+  <field name="curator_note_annotation" type="text_general"/>
+  <field name="database_cross_reference_annotation" type="text_general"/>
+  <field name="date_annotation" type="pdates"/>
+  <field name="decreased_in_magnitude_relative_to_rel" type="text_general"/>
+  <field name="default_query_factor_type" type="string" docValues="true"/>
+  <field name="definition_annotation" type="text_general"/>
+  <field name="definition_citation_annotation" type="text_general"/>
+  <field name="depicted_by_annotation" type="text_general"/>
+  <field name="derives_from_develops_from_rel" type="text_general"/>
+  <field name="derives_from_rel" type="text_general"/>
+  <field name="descendant_uris" type="text_general"/>
+  <field name="description" type="text_general"/>
+  <field name="develops_from_rel" type="text_general"/>
+  <field name="disease_has_feature_rel" type="text_general"/>
+  <field name="distalmost_part_of_rel" type="text_general"/>
+  <field name="dubious_for_taxon_annotation" type="text_general"/>
+  <field name="editor_note_annotation" type="text_general"/>
+  <field name="equivalent_uris" type="text_general"/>
+  <field name="example_of_usage_annotation" type="text_general"/>
+  <field name="expand_assertion_to_annotation" type="text_general"/>
+  <field name="experiment_accession" type="string" docValues="true"/>
+  <field name="experiment_type" type="string" docValues="true"/>
+  <field name="expression_level" type="pdouble" docValues="true"/>
+  <field name="expression_level_fpkm" type="pdouble" docValues="true"/>
+  <field name="expression_levels" type="pdouble" multiValued="true"/>
+  <field name="expression_levels_fpkm" type="pdouble" multiValued="true"/>
+  <field name="external_definition_annotation" type="text_general"/>
+  <field name="external_ontology_notes_annotation" type="text_general"/>
+  <field name="factors" type="string" multiValued="true" docValues="true"/>
+  <field name="fma_set_term_annotation" type="text_general"/>
+  <field name="fold_change" type="pdouble" docValues="true"/>
+  <field name="formula_annotation" type="text_general"/>
+  <field name="galen_definition_citation_annotation" type="text_general"/>
+  <field name="gwas_trait_annotation" type="booleans"/>
+  <field name="hasAncestryStatus_rel" type="text_general"/>
+  <field name="has_about_it_rel" type="text_general"/>
+  <field name="has_alternative_id_annotation" type="text_general"/>
+  <field name="has_broad_synonym_annotation" type="text_general"/>
+  <field name="has_curation_status_annotation" type="text_general"/>
+  <field name="has_disease_location_rel" type="text_general"/>
+  <field name="has_exact_synonym_annotation" type="text_general"/>
+  <field name="has_input_rel" type="text_general"/>
+  <field name="has_modifier_rel" type="text_general"/>
+  <field name="has_narrow_synonym_annotation" type="text_general"/>
+  <field name="has_obo_namespace_annotation" type="text_general"/>
+  <field name="has_output_rel" type="text_general"/>
+  <field name="has_part_rel" type="text_general"/>
+  <field name="has_participant_rel" type="text_general"/>
+  <field name="has_phenotype_rel" type="text_general"/>
+  <field name="has_plasma_membrane_part_rel" type="text_general"/>
+  <field name="has_quality_rel" type="text_general"/>
+  <field name="has_rank_annotation" type="text_general"/>
+  <field name="has_related_synonym_annotation" type="text_general"/>
+  <field name="has_relational_adjective_annotation" type="text_general"/>
+  <field name="has_role_rel" type="text_general"/>
+  <field name="homologous_in_annotation" type="text_general"/>
+  <field name="homology_notes_annotation" type="text_general"/>
+  <field name="id" type="string" multiValued="false" indexed="true" required="true" stored="true"/>
+  <field name="id_annotation" type="text_general"/>
+  <field name="identifier_search" type="text_en" stored="false"/>
+  <field name="immediate_transformation_of_rel" type="text_general"/>
+  <field name="imported_from_annotation" type="text_general"/>
+  <field name="in_lateral_side_of_rel" type="text_general"/>
+  <field name="in_subset_annotation" type="text_general"/>
+  <field name="inchi_annotation" type="text_general"/>
+  <field name="inchikey_annotation" type="text_general"/>
+  <field name="increased_in_magnitude_relative_to_rel" type="text_general"/>
+  <field name="inheres_in_part_of_rel" type="text_general"/>
+  <field name="inheres_in_rel" type="text_general"/>
+  <field name="isDemonymOf_rel" type="text_general"/>
+  <field name="is_about_rel" type="text_general"/>
+  <field name="is_class_level_annotation" type="booleans"/>
+  <field name="is_count_of_annotation" type="text_general"/>
+  <field name="is_defining_ontology" type="booleans"/>
+  <field name="is_executed_in_rel" type="text_general"/>
+  <field name="is_input_of_rel" type="text_general"/>
+  <field name="is_metadata_tag_annotation" type="booleans"/>
+  <field name="is_obsolete" type="booleans"/>
+  <field name="is_private" type="boolean"/>
+  <field name="is_root" type="booleans"/>
+  <field name="is_unit_of_rel" type="text_general"/>
+  <field name="kingdom" type="string" docValues="true"/>
+  <field name="label" type="text_general"/>
+  <field name="located_in_rel" type="text_general"/>
+  <field name="logical_descriptions" type="text_general"/>
+  <field name="mass_annotation" type="pdoubles"/>
+  <field name="monoisotopicmass_annotation" type="pdoubles"/>
+  <field name="namespace_annotation" type="text_general"/>
+  <field name="never_in_taxon_annotation" type="text_general"/>
+  <field name="null_annotation" type="booleans"/>
+  <field name="num_replicates" type="pint" docValues="true"/>
+  <field name="obsoleted_in_version_annotation" type="string" omitNorms="true" omitTermFreqAndPositions="true" indexed="true" stored="true" docValues="true" multiValued="true"/>
+  <field name="occurs_in_rel" type="text_general"/>
+  <field name="only_in_taxon_rel" type="text_general"/>
+  <field name="organizational_class_annotation" type="booleans"/>
+  <field name="p_value" type="pdouble" docValues="true"/>
+  <field name="parent_uris" type="text_general"/>
+  <field name="part_of_rel" type="text_general"/>
+  <field name="participates_in_rel" type="text_general"/>
+  <field name="preceding_element_is_annotation" type="text_general"/>
+  <field name="preferred_label_annotation" type="text_general"/>
+  <field name="present_in_taxon_annotation" type="text_general"/>
+  <field name="primary_source_annotation" type="text_general"/>
+  <field name="provenance_notes_annotation" type="text_general"/>
+  <field name="proximal_to_rel" type="text_general"/>
+  <field name="reason_for_obsolescence_annotation" type="text_general"/>
+  <field name="regulates_rel" type="text_general"/>
+  <field name="regulation" type="string" docValues="true"/>
+  <field name="related_to_rel" type="text_general"/>
+  <field name="rhombomere_number_annotation" type="plongs"/>
+  <field name="see_also_annotation" type="text_general"/>
+  <field name="semi_formal_definition_annotation" type="text_general"/>
+  <field name="short_form" type="text_general"/>
+  <field name="shorthand_annotation" type="text_general"/>
+  <field name="smiles_annotation" type="text_general"/>
+  <field name="source" type="text_general"/>
+  <field name="source_definition_annotation" type="text_general"/>
+  <field name="spatially_disjoint_from_annotation" type="text_general"/>
+  <field name="species" type="string" docValues="true"/>
+  <field name="structure_notes_annotation" type="text_general"/>
+  <field name="synonyms" type="text_general"/>
+  <field name="t_statistic" type="pdouble"/>
+  <field name="taxon_notes_annotation" type="text_general"/>
+  <field name="term_editor_annotation" type="text_general"/>
+  <field name="term_replaced_by_annotation" type="text_general"/>
+  <field name="type" type="text_general"/>
+  <field name="uri" type="text_general"/>
+  <field name="uri_key" type="plongs"/>
+  <dynamicField name="*_txt_en_split_tight" type="text_en_splitting_tight" indexed="true" stored="true"/>
+  <dynamicField name="*_descendent_path" type="descendent_path" indexed="true" stored="true"/>
+  <dynamicField name="*_ancestor_path" type="ancestor_path" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_en_split" type="text_en_splitting" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_rev" type="text_general_rev" indexed="true" stored="true"/>
+  <dynamicField name="*_phon_en" type="phonetic_en" indexed="true" stored="true"/>
+  <dynamicField name="*_s_lower" type="lowercase" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_cjk" type="text_cjk" indexed="true" stored="true"/>
+  <dynamicField name="keyword_*" type="lowercase" multiValued="true"/>
+  <dynamicField name="*_txt_en" type="text_en" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_ar" type="text_ar" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_bg" type="text_bg" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_ca" type="text_ca" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_cz" type="text_cz" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_da" type="text_da" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_de" type="text_de" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_el" type="text_el" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_es" type="text_es" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_eu" type="text_eu" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_fa" type="text_fa" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_fi" type="text_fi" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_fr" type="text_fr" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_ga" type="text_ga" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_gl" type="text_gl" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_hi" type="text_hi" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_hu" type="text_hu" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_hy" type="text_hy" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_id" type="text_id" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_it" type="text_it" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_ja" type="text_ja" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_lv" type="text_lv" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_nl" type="text_nl" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_no" type="text_no" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_pt" type="text_pt" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_ro" type="text_ro" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_ru" type="text_ru" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_sv" type="text_sv" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_th" type="text_th" indexed="true" stored="true"/>
+  <dynamicField name="*_txt_tr" type="text_tr" indexed="true" stored="true"/>
+  <dynamicField name="*_point" type="point" indexed="true" stored="true"/>
+  <dynamicField name="*_srpt" type="location_rpt" indexed="true" stored="true"/>
+  <dynamicField name="attr_*" type="text_general" multiValued="true" indexed="true" stored="true"/>
+  <dynamicField name="*_txt" type="text_general" indexed="true" stored="true"/>
+  <dynamicField name="*_str" type="strings" docValues="true" indexed="false" stored="false"/>
+  <dynamicField name="*_dts" type="pdate" multiValued="true" indexed="true" stored="true"/>
+  <dynamicField name="*_dpf" type="delimited_payloads_float" indexed="true" stored="true"/>
+  <dynamicField name="*_dpi" type="delimited_payloads_int" indexed="true" stored="true"/>
+  <dynamicField name="*_dps" type="delimited_payloads_string" indexed="true" stored="true"/>
+  <dynamicField name="*_is" type="pints" indexed="true" stored="true"/>
+  <dynamicField name="*_ss" type="strings" indexed="true" stored="true"/>
+  <dynamicField name="*_ls" type="plongs" indexed="true" stored="true"/>
+  <dynamicField name="*_bs" type="booleans" indexed="true" stored="true"/>
+  <dynamicField name="*_fs" type="pfloats" indexed="true" stored="true"/>
+  <dynamicField name="*_ds" type="pdoubles" indexed="true" stored="true"/>
+  <dynamicField name="*_dt" type="pdate" indexed="true" stored="true"/>
+  <dynamicField name="*_ws" type="text_ws" indexed="true" stored="true"/>
+  <dynamicField name="*_i" type="pint" indexed="true" stored="true"/>
+  <dynamicField name="*_s" type="string" indexed="true" stored="true"/>
+  <dynamicField name="*_l" type="plong" indexed="true" stored="true"/>
+  <dynamicField name="*_b" type="boolean" indexed="true" stored="true"/>
+  <dynamicField name="*_f" type="pfloat" indexed="true" stored="true"/>
+  <dynamicField name="*_d" type="pdouble" indexed="true" stored="true"/>
+  <dynamicField name="*_p" type="location" indexed="true" stored="true"/>
+  <copyField source="bioentity_identifier" dest="bioentity_identifier_search"/>
+  <copyField source="definition_annotation" dest="definition_annotation_str" maxChars="256"/>
+  <copyField source="synonyms" dest="synonyms_str" maxChars="256"/>
+  <copyField source="equivalent_uris" dest="equivalent_uris_str" maxChars="256"/>
+  <copyField source="term_editor_annotation" dest="term_editor_annotation_str" maxChars="256"/>
+  <copyField source="ancestor_uris" dest="ancestor_uris_str" maxChars="256"/>
+  <copyField source="source" dest="source_str" maxChars="256"/>
+  <copyField source="label" dest="label_str" maxChars="256"/>
+  <copyField source="type" dest="type_str" maxChars="256"/>
+  <copyField source="uri" dest="uri_str" maxChars="256"/>
+  <copyField source="short_form" dest="short_form_str" maxChars="256"/>
+  <copyField source="MSH_definition_citation_annotation" dest="MSH_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="DOID_definition_citation_annotation" dest="DOID_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="parent_uris" dest="parent_uris_str" maxChars="256"/>
+  <copyField source="NCI_Thesaurus_definition_citation_annotation" dest="NCI_Thesaurus_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="SNOMEDCT_definition_citation_annotation" dest="SNOMEDCT_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="MedDRA_definition_citation_annotation" dest="MedDRA_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="AEO_definition_citation_annotation" dest="AEO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="id_annotation" dest="id_annotation_str" maxChars="256"/>
+  <copyField source="FMA_definition_citation_annotation" dest="FMA_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="has_obo_namespace_annotation" dest="has_obo_namespace_annotation_str" maxChars="256"/>
+  <copyField source="external_definition_annotation" dest="external_definition_annotation_str" maxChars="256"/>
+  <copyField source="has_related_synonym_annotation" dest="has_related_synonym_annotation_str" maxChars="256"/>
+  <copyField source="imported_from_annotation" dest="imported_from_annotation_str" maxChars="256"/>
+  <copyField source="ICD10_definition_citation_annotation" dest="ICD10_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="logical_descriptions" dest="logical_descriptions_str" maxChars="256"/>
+  <copyField source="descendant_uris" dest="descendant_uris_str" maxChars="256"/>
+  <copyField source="child_uris" dest="child_uris_str" maxChars="256"/>
+  <copyField source="UMLS_definition_citation_annotation" dest="UMLS_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="OMIM_definition_citation_annotation" dest="OMIM_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="has_rank_annotation" dest="has_rank_annotation_str" maxChars="256"/>
+  <copyField source="spatially_disjoint_from_annotation" dest="spatially_disjoint_from_annotation_str" maxChars="256"/>
+  <copyField source="in_subset_annotation" dest="in_subset_annotation_str" maxChars="256"/>
+  <copyField source="database_cross_reference_annotation" dest="database_cross_reference_annotation_str" maxChars="256"/>
+  <copyField source="EHDAA2_definition_citation_annotation" dest="EHDAA2_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="EV_definition_citation_annotation" dest="EV_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="EFO_definition_citation_annotation" dest="EFO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="homologous_in_annotation" dest="homologous_in_annotation_str" maxChars="256"/>
+  <copyField source="MA_definition_citation_annotation" dest="MA_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="TAO_definition_citation_annotation" dest="TAO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="develops_from_rel" dest="develops_from_rel_str" maxChars="256"/>
+  <copyField source="part_of_rel" dest="part_of_rel_str" maxChars="256"/>
+  <copyField source="VHOG_definition_citation_annotation" dest="VHOG_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="ABA_definition_citation_annotation" dest="ABA_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="BM_definition_citation_annotation" dest="BM_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="comment_annotation" dest="comment_annotation_str" maxChars="256"/>
+  <copyField source="ZFA_definition_citation_annotation" dest="ZFA_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="Wikipedia_definition_citation_annotation" dest="Wikipedia_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="NIF_GrossAnatomy_definition_citation_annotation" dest="NIF_GrossAnatomy_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="BTO_definition_citation_annotation" dest="BTO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="MIAA_definition_citation_annotation" dest="MIAA_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="MAT_definition_citation_annotation" dest="MAT_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="EMAPA_definition_citation_annotation" dest="EMAPA_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="XAO_definition_citation_annotation" dest="XAO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="has_alternative_id_annotation" dest="has_alternative_id_annotation_str" maxChars="256"/>
+  <copyField source="definition_citation_annotation" dest="definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="depicted_by_annotation" dest="depicted_by_annotation_str" maxChars="256"/>
+  <copyField source="has_exact_synonym_annotation" dest="has_exact_synonym_annotation_str" maxChars="256"/>
+  <copyField source="CALOHA_definition_citation_annotation" dest="CALOHA_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="EHDAA_definition_citation_annotation" dest="EHDAA_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="GAID_definition_citation_annotation" dest="GAID_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="OpenCyc_definition_citation_annotation" dest="OpenCyc_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="has_relational_adjective_annotation" dest="has_relational_adjective_annotation_str" maxChars="256"/>
+  <copyField source="taxon_notes_annotation" dest="taxon_notes_annotation_str" maxChars="256"/>
+  <copyField source="VSAO_definition_citation_annotation" dest="VSAO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="AAO_definition_citation_annotation" dest="AAO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="homology_notes_annotation" dest="homology_notes_annotation_str" maxChars="256"/>
+  <copyField source="ICD9_definition_citation_annotation" dest="ICD9_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="created_by_annotation" dest="created_by_annotation_str" maxChars="256"/>
+  <copyField source="galen_definition_citation_annotation" dest="galen_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="has_modifier_rel" dest="has_modifier_rel_str" maxChars="256"/>
+  <copyField source="has_role_rel" dest="has_role_rel_str" maxChars="256"/>
+  <copyField source="EFO_URI_annotation" dest="EFO_URI_annotation_str" maxChars="256"/>
+  <copyField source="has_disease_location_rel" dest="has_disease_location_rel_str" maxChars="256"/>
+  <copyField source="bioportal_provenance_annotation" dest="bioportal_provenance_annotation_str" maxChars="256"/>
+  <copyField source="editor_note_annotation" dest="editor_note_annotation_str" maxChars="256"/>
+  <copyField source="WBbt_definition_citation_annotation" dest="WBbt_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="TGMA_definition_citation_annotation" dest="TGMA_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="FBbt_definition_citation_annotation" dest="FBbt_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="HAO_definition_citation_annotation" dest="HAO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="BILA_definition_citation_annotation" dest="BILA_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="InChIKey_annotation" dest="InChIKey_annotation_str" maxChars="256"/>
+  <copyField source="SMILES_annotation" dest="SMILES_annotation_str" maxChars="256"/>
+  <copyField source="InChI_annotation" dest="InChI_annotation_str" maxChars="256"/>
+  <copyField source="ChemIDplus_definition_citation_annotation" dest="ChemIDplus_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="Beilstein_definition_citation_annotation" dest="Beilstein_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="has_broad_synonym_annotation" dest="has_broad_synonym_annotation_str" maxChars="256"/>
+  <copyField source="KEGG_COMPOUND_definition_citation_annotation" dest="KEGG_COMPOUND_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="ChEMBL_definition_citation_annotation" dest="ChEMBL_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="example_of_usage_annotation" dest="example_of_usage_annotation_str" maxChars="256"/>
+  <copyField source="source_definition_annotation" dest="source_definition_annotation_str" maxChars="256"/>
+  <copyField source="BIRNLEX_definition_citation_annotation" dest="BIRNLEX_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="MONDO_definition_citation_annotation" dest="MONDO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="participates_in_rel" dest="participates_in_rel_str" maxChars="256"/>
+  <copyField source="PMID_definition_citation_annotation" dest="PMID_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="MP_definition_citation_annotation" dest="MP_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="Gmelin_definition_citation_annotation" dest="Gmelin_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="NIST_Chemistry_WebBook_definition_citation_annotation" dest="NIST_Chemistry_WebBook_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="is_about_rel" dest="is_about_rel_str" maxChars="256"/>
+  <copyField source="reason_for_obsolescence_annotation" dest="reason_for_obsolescence_annotation_str" maxChars="256"/>
+  <copyField source="SAEL_definition_citation_annotation" dest="SAEL_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="term_replaced_by_annotation" dest="term_replaced_by_annotation_str" maxChars="256"/>
+  <copyField source="ZEA_definition_citation_annotation" dest="ZEA_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="PO_definition_citation_annotation" dest="PO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="has_quality_rel" dest="has_quality_rel_str" maxChars="256"/>
+  <copyField source="HMDB_definition_citation_annotation" dest="HMDB_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="PDBeChem_definition_citation_annotation" dest="PDBeChem_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="DrugBank_definition_citation_annotation" dest="DrugBank_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="Reaxys_definition_citation_annotation" dest="Reaxys_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="CiteXplore_definition_citation_annotation" dest="CiteXplore_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="TADS_definition_citation_annotation" dest="TADS_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="WebElements_definition_citation_annotation" dest="WebElements_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="ORDO_definition_citation_annotation" dest="ORDO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="HP_definition_citation_annotation" dest="HP_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="description" dest="description_str" maxChars="256"/>
+  <copyField source="KEGG_DRUG_definition_citation_annotation" dest="KEGG_DRUG_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="creator_annotation" dest="creator_annotation_str" maxChars="256"/>
+  <copyField source="MetaCyc_definition_citation_annotation" dest="MetaCyc_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="has_input_rel" dest="has_input_rel_str" maxChars="256"/>
+  <copyField source="RESID_definition_citation_annotation" dest="RESID_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="EVM_definition_citation_annotation" dest="EVM_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="NIFSTD_definition_citation_annotation" dest="NIFSTD_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="MFO_definition_citation_annotation" dest="MFO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="never_in_taxon_annotation" dest="never_in_taxon_annotation_str" maxChars="256"/>
+  <copyField source="structure_notes_annotation" dest="structure_notes_annotation_str" maxChars="256"/>
+  <copyField source="curator_note_annotation" dest="curator_note_annotation_str" maxChars="256"/>
+  <copyField source="Reactome_definition_citation_annotation" dest="Reactome_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="fma_set_term_annotation" dest="fma_set_term_annotation_str" maxChars="256"/>
+  <copyField source="bearer_of_rel" dest="bearer_of_rel_str" maxChars="256"/>
+  <copyField source="FBdv_definition_citation_annotation" dest="FBdv_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="CL_definition_citation_annotation" dest="CL_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="MolBase_definition_citation_annotation" dest="MolBase_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="EHDAA2_RETIRED_definition_citation_annotation" dest="EHDAA2_RETIRED_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="external_ontology_notes_annotation" dest="external_ontology_notes_annotation_str" maxChars="256"/>
+  <copyField source="MO_definition_citation_annotation" dest="MO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="Patent_definition_citation_annotation" dest="Patent_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="ICD9CM_definition_citation_annotation" dest="ICD9CM_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="has_phenotype_rel" dest="has_phenotype_rel_str" maxChars="256"/>
+  <copyField source="related_to_rel" dest="related_to_rel_str" maxChars="256"/>
+  <copyField source="ArrayExpress_label_annotation" dest="ArrayExpress_label_annotation_str" maxChars="256"/>
+  <copyField source="distalmost_part_of_rel" dest="distalmost_part_of_rel_str" maxChars="256"/>
+  <copyField source="proximal_to_rel" dest="proximal_to_rel_str" maxChars="256"/>
+  <copyField source="disease_has_feature_rel" dest="disease_has_feature_rel_str" maxChars="256"/>
+  <copyField source="GO_definition_citation_annotation" dest="GO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="has_narrow_synonym_annotation" dest="has_narrow_synonym_annotation_str" maxChars="256"/>
+  <copyField source="NIF_Subcellular_definition_citation_annotation" dest="NIF_Subcellular_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="XtroDO_definition_citation_annotation" dest="XtroDO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="MmusDv_definition_citation_annotation" dest="MmusDv_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="ZFS_definition_citation_annotation" dest="ZFS_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="OGES_definition_citation_annotation" dest="OGES_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="BILS_definition_citation_annotation" dest="BILS_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="HsapDv_definition_citation_annotation" dest="HsapDv_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="BilaDO_definition_citation_annotation" dest="BilaDO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="PdumDv_definition_citation_annotation" dest="PdumDv_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="see_also_annotation" dest="see_also_annotation_str" maxChars="256"/>
+  <copyField source="ISBN_definition_citation_annotation" dest="ISBN_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="isDemonymOf_rel" dest="isDemonymOf_rel_str" maxChars="256"/>
+  <copyField source="ANISEED_definition_citation_annotation" dest="ANISEED_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="axiom_lost_from_external_ontology_annotation" dest="axiom_lost_from_external_ontology_annotation_str" maxChars="256"/>
+  <copyField source="ENVO_definition_citation_annotation" dest="ENVO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="has_participant_rel" dest="has_participant_rel_str" maxChars="256"/>
+  <copyField source="CARO_definition_citation_annotation" dest="CARO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="PATO_definition_citation_annotation" dest="PATO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="primary_source_annotation" dest="primary_source_annotation_str" maxChars="256"/>
+  <copyField source="inheres_in_rel" dest="inheres_in_rel_str" maxChars="256"/>
+  <copyField source="formula_annotation" dest="formula_annotation_str" maxChars="256"/>
+  <copyField source="inchikey_annotation" dest="inchikey_annotation_str" maxChars="256"/>
+  <copyField source="smiles_annotation" dest="smiles_annotation_str" maxChars="256"/>
+  <copyField source="inchi_annotation" dest="inchi_annotation_str" maxChars="256"/>
+  <copyField source="NCI_Metathesaurus_definition_citation_annotation" dest="NCI_Metathesaurus_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="BAO_definition_citation_annotation" dest="BAO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="OGEM_definition_citation_annotation" dest="OGEM_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="WBls_definition_citation_annotation" dest="WBls_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="increased_in_magnitude_relative_to_rel" dest="increased_in_magnitude_relative_to_rel_str" maxChars="256"/>
+  <copyField source="RO_0002175_annotation" dest="RO_0002175_annotation_str" maxChars="256"/>
+  <copyField source="preferred_label_annotation" dest="preferred_label_annotation_str" maxChars="256"/>
+  <copyField source="Coriell_definition_citation_annotation" dest="Coriell_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="semi_formal_definition_annotation" dest="semi_formal_definition_annotation_str" maxChars="256"/>
+  <copyField source="MedlinePlus_definition_citation_annotation" dest="MedlinePlus_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="namespace_annotation" dest="namespace_annotation_str" maxChars="256"/>
+  <copyField source="RETIRED_EHDAA2_definition_citation_annotation" dest="RETIRED_EHDAA2_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="has_part_rel" dest="has_part_rel_str" maxChars="256"/>
+  <copyField source="createdBy_annotation" dest="createdBy_annotation_str" maxChars="256"/>
+  <copyField source="NIF_GrossAnatomy_RETIRED_definition_citation_annotation" dest="NIF_GrossAnatomy_RETIRED_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="DMBA_definition_citation_annotation" dest="DMBA_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="HBA_definition_citation_annotation" dest="HBA_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="DHBA_definition_citation_annotation" dest="DHBA_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="PBA_definition_citation_annotation" dest="PBA_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="BAMS_definition_citation_annotation" dest="BAMS_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="hasAncestryStatus_rel" dest="hasAncestryStatus_rel_str" maxChars="256"/>
+  <copyField source="immediate_transformation_of_rel" dest="immediate_transformation_of_rel_str" maxChars="256"/>
+  <copyField source="IAO_0000119_annotation" dest="IAO_0000119_annotation_str" maxChars="256"/>
+  <copyField source="OAE_definition_citation_annotation" dest="OAE_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="UM-BBD_definition_citation_annotation" dest="UM-BBD_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="ChEBI_definition_citation_annotation" dest="ChEBI_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="inheres_in_part_of_rel" dest="inheres_in_part_of_rel_str" maxChars="256"/>
+  <copyField source="SUBMITTER_definition_citation_annotation" dest="SUBMITTER_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="derives_from_rel" dest="derives_from_rel_str" maxChars="256"/>
+  <copyField source="is_input_of_rel" dest="is_input_of_rel_str" maxChars="256"/>
+  <copyField source="PERSON_definition_citation_annotation" dest="PERSON_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="PDB_definition_citation_annotation" dest="PDB_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="Germplasm_definition_citation_annotation" dest="Germplasm_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="JAX_definition_citation_annotation" dest="JAX_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="RGD_definition_citation_annotation" dest="RGD_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="SRA_label_annotation" dest="SRA_label_annotation_str" maxChars="256"/>
+  <copyField source="ATC_code_definition_citation_annotation" dest="ATC_code_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="MAP_definition_citation_annotation" dest="MAP_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="dubious_for_taxon_annotation" dest="dubious_for_taxon_annotation_str" maxChars="256"/>
+  <copyField source="COMe_definition_citation_annotation" dest="COMe_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="has_output_rel" dest="has_output_rel_str" maxChars="256"/>
+  <copyField source="located_in_rel" dest="located_in_rel_str" maxChars="256"/>
+  <copyField source="is_unit_of_rel" dest="is_unit_of_rel_str" maxChars="256"/>
+  <copyField source="ERO_definition_citation_annotation" dest="ERO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="OBI_definition_citation_annotation" dest="OBI_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="regulates_rel" dest="regulates_rel_str" maxChars="256"/>
+  <copyField source="EMAPA_RETIRED_definition_citation_annotation" dest="EMAPA_RETIRED_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="has_curation_status_annotation" dest="has_curation_status_annotation_str" maxChars="256"/>
+  <copyField source="DSSTox_Generic_SID_definition_citation_annotation" dest="DSSTox_Generic_SID_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="CASRN_definition_citation_annotation" dest="CASRN_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="STRUCTURE_Formula_definition_citation_annotation" dest="STRUCTURE_Formula_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="DSSTox_CID_definition_citation_annotation" dest="DSSTox_CID_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="STRUCTURE_ChemicalName_IUPAC_definition_citation_annotation" dest="STRUCTURE_ChemicalName_IUPAC_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="TO_definition_citation_annotation" dest="TO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="FAO_definition_citation_annotation" dest="FAO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="NIF_Cell_definition_citation_annotation" dest="NIF_Cell_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="GOC_definition_citation_annotation" dest="GOC_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="UniProt_definition_citation_annotation" dest="UniProt_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="only_in_taxon_rel" dest="only_in_taxon_rel_str" maxChars="256"/>
+  <copyField source="derives_from_develops_from_rel" dest="derives_from_develops_from_rel_str" maxChars="256"/>
+  <copyField source="IDO_definition_citation_annotation" dest="IDO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="FBtc_definition_citation_annotation" dest="FBtc_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="CLO_definition_citation_annotation" dest="CLO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="capable_of_rel" dest="capable_of_rel_str" maxChars="256"/>
+  <copyField source="provenance_notes_annotation" dest="provenance_notes_annotation_str" maxChars="256"/>
+  <copyField source="MCC_definition_citation_annotation" dest="MCC_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="APweb_definition_citation_annotation" dest="APweb_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="UBERON_definition_citation_annotation" dest="UBERON_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="KUPO_definition_citation_annotation" dest="KUPO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="ATCC_definition_citation_annotation" dest="ATCC_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="has_about_it_rel" dest="has_about_it_rel_str" maxChars="256"/>
+  <copyField source="UBPROP_0000011_annotation" dest="UBPROP_0000011_annotation_str" maxChars="256"/>
+  <copyField source="TE_definition_citation_annotation" dest="TE_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="CMO_definition_citation_annotation" dest="CMO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="is_executed_in_rel" dest="is_executed_in_rel_str" maxChars="256"/>
+  <copyField source="PRO_definition_citation_annotation" dest="PRO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="IDOMAL_definition_citation_annotation" dest="IDOMAL_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="in_lateral_side_of_rel" dest="in_lateral_side_of_rel_str" maxChars="256"/>
+  <copyField source="MBA_definition_citation_annotation" dest="MBA_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="decreased_in_magnitude_relative_to_rel" dest="decreased_in_magnitude_relative_to_rel_str" maxChars="256"/>
+  <copyField source="DrerDO_definition_citation_annotation" dest="DrerDO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="present_in_taxon_annotation" dest="present_in_taxon_annotation_str" maxChars="256"/>
+  <copyField source="BFO_definition_citation_annotation" dest="BFO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="NeuroNames_definition_citation_annotation" dest="NeuroNames_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="composed_primarily_of_rel" dest="composed_primarily_of_rel_str" maxChars="256"/>
+  <copyField source="has_plasma_membrane_part_rel" dest="has_plasma_membrane_part_rel_str" maxChars="256"/>
+  <copyField source="EHDA_definition_citation_annotation" dest="EHDA_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="SPD_definition_citation_annotation" dest="SPD_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="occurs_in_rel" dest="occurs_in_rel_str" maxChars="256"/>
+  <copyField source="VO_definition_citation_annotation" dest="VO_definition_citation_annotation_str" maxChars="256"/>
+  <copyField source="shorthand_annotation" dest="shorthand_annotation_str" maxChars="256"/>
+  <copyField source="RO_0001900_annotation" dest="RO_0001900_annotation_str" maxChars="256"/>
+  <copyField source="expand_assertion_to_annotation" dest="expand_assertion_to_annotation_str" maxChars="256"/>
+  <copyField source="is_count_of_annotation" dest="is_count_of_annotation_str" maxChars="256"/>
+  <copyField source="preceding_element_is_annotation" dest="preceding_element_is_annotation_str" maxChars="256"/>
+</schema>

@@ -1,0 +1,62 @@
+{
+  "_comment": "The original request for this example response is https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:%2210.1126/sciimmunol.aan8664%22&format=json",
+  "version": "6.8",
+  "hitCount": 1,
+  "request": {
+    "queryString": "DOI:\"10.1126/sciimmunol.aan8664\"",
+    "resultType": "lite",
+    "cursorMark": "*",
+    "pageSize": 25,
+    "sort": "",
+    "synonym": false
+  },
+  "resultList": {
+    "result": [
+      {
+        "id": "29352091",
+        "source": "MED",
+        "pmid": "29352091",
+        "pmcid": "PMC5931334",
+        "fullTextIdList": {
+          "fullTextId": [
+            "PMC5931334"
+          ]
+        },
+        "doi": "10.1126/sciimmunol.aan8664",
+        "title": "Precursors of human CD4+ cytotoxic T lymphocytes identified by single-cell transcriptome analysis. ",
+        "authorString": "Patil VS, Madrigal A, Schmiedel BJ, Clarke J, O'Rourke P, de Silva AD, Harris E, Peters B, Seumois G, Weiskopf D, Sette A, Vijayanand P.",
+        "journalTitle": "Sci Immunol",
+        "issue": "19",
+        "journalVolume": "3",
+        "pubYear": "2018",
+        "journalIssn": "2470-9468",
+        "pageInfo": "eaan8664",
+        "pubType": "im; research support, non-u.s. gov't; research-article; journal article; research support, n.i.h., extramural",
+        "isOpenAccess": "N",
+        "inEPMC": "Y",
+        "inPMC": "N",
+        "hasPDF": "Y",
+        "hasBook": "N",
+        "hasSuppl": "Y",
+        "citedByCount": 111,
+        "hasReferences": "Y",
+        "hasTextMinedTerms": "Y",
+        "hasDbCrossReferences": "Y",
+        "dbCrossReferenceList": {
+          "dbName": [
+            "EMBL"
+          ]
+        },
+        "hasLabsLinks": "Y",
+        "hasTMAccessionNumbers": "Y",
+        "tmAccessionTypeList": {
+          "accessionType": [
+            "geo"
+          ]
+        },
+        "firstIndexDate": "2018-01-21",
+        "firstPublicationDate": "2018-01-01"
+      }
+    ]
+  }
+}

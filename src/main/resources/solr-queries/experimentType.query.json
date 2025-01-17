@@ -1,0 +1,6 @@
+{
+  "experimentType": {
+    "type": "terms",
+    "field": "experiment_type"
+  }
+}

@@ -1,0 +1,10 @@
+[{
+  "name":"Tyrannosaurus_rex",
+  "defaultQueryFactorType":"ORGANISM_PART",
+  "kingdom":"animals",
+  "resources":[{
+    "type":"genome_browser",
+    "name":"Ensembl Dinosaurs",
+    "url":"http://dinosaurs.ensembl.org/tyrannosaurus_rex"
+  }]
+}]
