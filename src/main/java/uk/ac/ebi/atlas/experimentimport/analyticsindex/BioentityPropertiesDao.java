@@ -3,25 +3,25 @@ package uk.ac.ebi.atlas.experimentimport.analyticsindex;
 import com.google.common.collect.ImmutableMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.util.StopWatch;
 import uk.ac.ebi.atlas.experimentimport.analyticsindex.stream.ExperimentDataPoint;
 import uk.ac.ebi.atlas.solr.bioentities.BioentityPropertyName;
 import uk.ac.ebi.atlas.solr.bioentities.query.BioentitiesSolrClient;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.text.NumberFormat;
 import java.util.Map;
 import java.util.Set;
 
-@Named
+@Controller
 public class BioentityPropertiesDao {
     private static final Logger LOGGER = LoggerFactory.getLogger(BioentityPropertiesDao.class);
     private static final NumberFormat NUMBER_FORMAT = NumberFormat.getInstance();
 
     private BioentitiesSolrClient gxaSolrClient;
 
-    @Inject
+    @Autowired
     public BioentityPropertiesDao(BioentitiesSolrClient gxaSolrClient) {
         this.gxaSolrClient = gxaSolrClient;
     }

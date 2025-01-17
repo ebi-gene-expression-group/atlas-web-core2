@@ -1,23 +1,23 @@
 package uk.ac.ebi.atlas.experimentimport.analytics.baseline;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import uk.ac.ebi.atlas.commons.streams.ObjectInputStream;
 import uk.ac.ebi.atlas.model.ExpressionUnit;
 import uk.ac.ebi.atlas.model.experiment.ExperimentType;
 import uk.ac.ebi.atlas.model.resource.AtlasResource;
 import uk.ac.ebi.atlas.resource.DataFileHub;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.io.IOException;
 import java.util.Optional;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
-@Named
+@Controller
 public class BaselineAnalyticsInputStreamFactory {
     private final DataFileHub dataFileHub;
 
-    @Inject
+    @Autowired
     public BaselineAnalyticsInputStreamFactory(DataFileHub dataFileHub) {
         this.dataFileHub = dataFileHub;
     }

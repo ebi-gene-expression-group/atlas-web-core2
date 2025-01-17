@@ -2,28 +2,27 @@ package uk.ac.ebi.atlas.experimentimport.sdrf;
 
 import com.google.common.collect.ImmutableList;
 import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import uk.ac.ebi.atlas.commons.readers.TsvStreamer;
 import uk.ac.ebi.atlas.resource.DataFileHub;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Map;
-import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static com.google.common.collect.ImmutableList.toImmutableList;
 
-@Named
+@Controller
 public class SdrfParser {
     private static final String TECHNOLOGY_TYPE_ID = "Comment[library construction]";
     private final DataFileHub dataFileHub;
 
-    @Inject
+    @Autowired
     public SdrfParser(DataFileHub dataFileHub) {
         this.dataFileHub = dataFileHub;
     }

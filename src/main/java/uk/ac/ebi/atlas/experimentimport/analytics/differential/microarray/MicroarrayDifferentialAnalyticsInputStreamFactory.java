@@ -1,18 +1,18 @@
 package uk.ac.ebi.atlas.experimentimport.analytics.differential.microarray;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import uk.ac.ebi.atlas.model.resource.AtlasResource;
 import uk.ac.ebi.atlas.resource.DataFileHub;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.io.IOException;
 
-@Named
+@Controller
 public class MicroarrayDifferentialAnalyticsInputStreamFactory {
 
     private DataFileHub dataFileHub;
 
-    @Inject
+    @Autowired
     public MicroarrayDifferentialAnalyticsInputStreamFactory(DataFileHub dataFileHub) {
         this.dataFileHub = dataFileHub;
     }

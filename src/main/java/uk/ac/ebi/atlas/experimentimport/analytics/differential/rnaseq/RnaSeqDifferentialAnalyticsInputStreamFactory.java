@@ -1,18 +1,18 @@
 package uk.ac.ebi.atlas.experimentimport.analytics.differential.rnaseq;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import uk.ac.ebi.atlas.model.resource.AtlasResource;
 import uk.ac.ebi.atlas.resource.DataFileHub;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.io.IOException;
 
-@Named
+@Controller
 public class RnaSeqDifferentialAnalyticsInputStreamFactory {
 
     private final DataFileHub dataFileHub;
 
-    @Inject
+    @Autowired
     public RnaSeqDifferentialAnalyticsInputStreamFactory(DataFileHub dataFileHub) {
         this.dataFileHub = dataFileHub;
     }

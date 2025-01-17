@@ -3,13 +3,12 @@ package uk.ac.ebi.atlas.experimentimport.coexpression;
 import com.google.common.collect.ImmutableList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Controller;
 import uk.ac.ebi.atlas.commons.streams.ObjectInputStream;
 
-import javax.inject.Inject;
-import javax.inject.Named;
-
-@Named
+@Controller
 public class BaselineCoexpressionProfileDao {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BaselineCoexpressionProfileDao.class);
@@ -19,7 +18,7 @@ public class BaselineCoexpressionProfileDao {
 
     private final JdbcTemplate jdbcTemplate;
 
-    @Inject
+    @Autowired
     public BaselineCoexpressionProfileDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }

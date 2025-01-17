@@ -13,6 +13,14 @@ java {
 
 repositories {
     mavenCentral()
+//    // For ae-efo-loader
+//    // Ideally mavenLocal() would be the last repo to have as fallback, but we won’t have access to our Artifactory
+//    // unless we’re on the VPN, in which case the build fails
+//    mavenLocal()
+//    maven {
+//        url "http://45.88.81.166/artifactory/maven-local/"
+//        allowInsecureProtocol true
+//    }
 }
 
 dependencyManagement {
@@ -29,16 +37,22 @@ dependencies {
     implementation 'org.slf4j:slf4j-api'
     implementation 'org.apache.commons:commons-lang3'
     implementation 'commons-io:commons-io:2.16.1'
+    implementation 'io.atlassian.util.concurrent:atlassian-util-concurrent:4.0.1'
     implementation 'com.google.guava:guava'
     implementation 'com.google.code.gson:gson'
+    implementation 'com.google.auto.value:auto-value-annotations:1.11.0'
     implementation 'com.fasterxml.jackson.core:jackson-databind'
     implementation 'org.jetbrains:annotations:20.1.0'
+    implementation 'org.eclipse.jdt:org.eclipse.jdt.annotation:2.3.0'
+    implementation 'joda-time:joda-time:2.10.10'
 
     implementation 'au.com.bytecode:opencsv:2.4'
 
     implementation ('org.apache.solr:solr-core:8.7.0') {
         exclude group: 'org.apache.logging.log4j', module: 'log4j-slf4j-impl'
     }
+
+//    implementation 'uk.ac.ebi.fg:ae-efo-loader:1.0.5'
 
     compileOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

@@ -3,27 +3,27 @@ package uk.ac.ebi.atlas.experimentimport.coexpression;
 import au.com.bytecode.opencsv.CSVReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import uk.ac.ebi.atlas.model.resource.AtlasResource;
 import uk.ac.ebi.atlas.resource.DataFileHub;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.io.IOException;
 
-@Named
+@Controller
 public class BaselineCoexpressionProfileLoader {
     private static final Logger LOGGER = LoggerFactory.getLogger(BaselineCoexpressionProfileInputStream.class);
 
     private BaselineCoexpressionProfileDao baselineCoexpressionProfileDao;
     private DataFileHub dataFileHub;
 
-    @Inject
+    @Autowired
     public BaselineCoexpressionProfileLoader(BaselineCoexpressionProfileDao baselineCoexpressionProfileDao) {
         this.baselineCoexpressionProfileDao = baselineCoexpressionProfileDao;
     }
 
-    @Inject
+    @Autowired
     public void setDataFileHub(DataFileHub dataFileHub) {
         this.dataFileHub = dataFileHub;
     }

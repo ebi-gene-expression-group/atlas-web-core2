@@ -4,13 +4,13 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.TreeMultimap;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
 
-import javax.inject.Named;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Map;
 
-@Named
+@Controller
 @Scope("singleton")
 public class AnalyticsIndexerMonitor {
 
