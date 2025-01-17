@@ -5,16 +5,16 @@ import com.google.common.collect.Lists;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.text.MessageFormat;
 import java.util.Collection;
 
-@Named
+@Component
 @Scope("prototype")
 public class UniProtClient {
 
@@ -25,7 +25,7 @@ public class UniProtClient {
 
     private RestTemplate restTemplate;
 
-    @Inject
+    @Autowired
     public UniProtClient(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }

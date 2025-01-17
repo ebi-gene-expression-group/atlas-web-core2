@@ -9,11 +9,11 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +21,7 @@ import java.util.Optional;
 
 import static uk.ac.ebi.atlas.utils.GsonProvider.GSON;
 
-@Named
+@Controller
 public class ReactomeClient {
     private static final Logger LOGGER = LoggerFactory.getLogger(ReactomeClient.class);
 
@@ -34,7 +34,7 @@ public class ReactomeClient {
 
     private final RestTemplate restTemplate;
 
-    @Inject
+    @Autowired
     public ReactomeClient(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }

@@ -1,13 +1,13 @@
 package uk.ac.ebi.atlas.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 import uk.ac.ebi.atlas.model.Publication;
 
-import javax.inject.Inject;
 import java.io.IOException;
 import java.util.Optional;
 
@@ -24,7 +24,7 @@ public class EuropePmcClient {
     private RestTemplate restTemplate;
     private ObjectMapper mapper;
 
-    @Inject
+    @Autowired
     public EuropePmcClient(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
         this.mapper = new ObjectMapper();

@@ -6,13 +6,13 @@ import com.google.gson.JsonObject;
 import org.apache.commons.lang3.tuple.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import uk.ac.ebi.atlas.commons.readers.TsvStreamer;
 import uk.ac.ebi.atlas.controllers.NoStatisticalSignificanceException;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.io.Reader;
 import java.io.StringReader;
 import java.text.MessageFormat;
@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Named
+@Component
 public class GeneSetEnrichmentClient {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GeneSetEnrichmentClient.class);
@@ -33,7 +33,7 @@ public class GeneSetEnrichmentClient {
             ("EXPERIMENT\tCOMPARISON_ID\tP-VALUE\tOBSERVED\tEXPECTED\t" +
              "ADJUSTED P-VALUE\tEFFECT SIZE\tCOMPARISON_TITLE\tEXPERIMENT_URL").split("\t");
 
-    @Inject
+    @Autowired
     public GeneSetEnrichmentClient(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }

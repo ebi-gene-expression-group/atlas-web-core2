@@ -23,6 +23,17 @@ dependencyManagement {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    implementation 'org.slf4j:slf4j-api'
+    implementation 'org.apache.commons:commons-lang3'
+    implementation 'commons-io:commons-io:2.16.1'
+    implementation 'com.google.guava:guava'
+    implementation 'com.google.code.gson:gson'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+
+    implementation 'au.com.bytecode:opencsv:2.4'
+
     compileOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation platform('org.junit:junit-bom:5.10.0')
