@@ -34,6 +34,10 @@ dependencies {
 
     implementation 'au.com.bytecode:opencsv:2.4'
 
+    implementation ('org.apache.solr:solr-core:8.7.0') {
+        exclude group: 'org.apache.logging.log4j', module: 'log4j-slf4j-impl'
+    }
+
     compileOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation platform('org.junit:junit-bom:5.10.0')
