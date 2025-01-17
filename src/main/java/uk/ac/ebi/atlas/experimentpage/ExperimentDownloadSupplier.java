@@ -1,12 +1,13 @@
 package uk.ac.ebi.atlas.experimentpage;
 
 import org.apache.commons.lang3.tuple.Pair;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import uk.ac.ebi.atlas.experimentpage.context.BaselineRequestContext;
 import uk.ac.ebi.atlas.experimentpage.context.BulkDifferentialRequestContext;
 import uk.ac.ebi.atlas.experimentpage.context.DifferentialRequestContextFactory;
 import uk.ac.ebi.atlas.experimentpage.context.MicroarrayRequestContext;
 import uk.ac.ebi.atlas.experimentpage.differential.CanStreamSupplier;
-import uk.ac.ebi.atlas.model.experiment.sample.AssayGroup;
 import uk.ac.ebi.atlas.model.ExpressionUnit;
 import uk.ac.ebi.atlas.model.download.ExternallyAvailableContent;
 import uk.ac.ebi.atlas.model.experiment.Experiment;
@@ -15,10 +16,11 @@ import uk.ac.ebi.atlas.model.experiment.baseline.BaselineExpression;
 import uk.ac.ebi.atlas.model.experiment.baseline.BaselineProfile;
 import uk.ac.ebi.atlas.model.experiment.differential.DifferentialExperiment;
 import uk.ac.ebi.atlas.model.experiment.differential.microarray.MicroarrayExperiment;
+import uk.ac.ebi.atlas.model.experiment.sample.AssayGroup;
 import uk.ac.ebi.atlas.profiles.ProfileStreamFilter;
 import uk.ac.ebi.atlas.profiles.baseline.BaselineProfileStreamOptions;
-import uk.ac.ebi.atlas.profiles.stream.MicroarrayProfileStreamFactory;
 import uk.ac.ebi.atlas.profiles.stream.BulkDifferentialProfileStreamFactory;
+import uk.ac.ebi.atlas.profiles.stream.MicroarrayProfileStreamFactory;
 import uk.ac.ebi.atlas.profiles.stream.ProfileStreamFactory;
 import uk.ac.ebi.atlas.profiles.stream.ProteomicsBaselineProfileStreamFactory;
 import uk.ac.ebi.atlas.profiles.stream.RnaSeqBaselineProfileStreamFactory;
@@ -35,8 +37,6 @@ import uk.ac.ebi.atlas.web.MicroarrayRequestPreferences;
 import uk.ac.ebi.atlas.web.ProteomicsBaselineRequestPreferences;
 import uk.ac.ebi.atlas.web.RnaSeqBaselineRequestPreferences;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Writer;
@@ -134,13 +134,13 @@ public abstract class ExperimentDownloadSupplier<E extends Experiment, P extends
         }
     }
 
-    @Named
+    @Controller
     public static class Proteomics
                         extends Baseline<
                                     ExpressionUnit.Absolute.Protein,
                                     BaselineRequestPreferences<ExpressionUnit.Absolute.Protein>> {
 
-        @Inject
+        @Autowired
         public Proteomics(BaselineProfilesWriterFactory<ExpressionUnit.Absolute.Protein> baselineProfilesWriterFactory,
                           SolrQueryService solrQueryService,
                           ProteomicsBaselineProfileStreamFactory baselineProfileStreamFactory) {
@@ -158,12 +158,12 @@ public abstract class ExperimentDownloadSupplier<E extends Experiment, P extends
         }
     }
 
-    @Named
+    @Controller
     public static class RnaSeqBaseline
                         extends Baseline<ExpressionUnit.Absolute.Rna, RnaSeqBaselineRequestPreferences> {
         private final DataFileHub dataFileHub;
 
-        @Inject
+        @Autowired
         public RnaSeqBaseline(BaselineProfilesWriterFactory<ExpressionUnit.Absolute.Rna> baselineProfilesWriterFactory,
                               SolrQueryService solrQueryService,
                               RnaSeqBaselineProfileStreamFactory baselineProfileStreamFactory,
@@ -186,7 +186,7 @@ public abstract class ExperimentDownloadSupplier<E extends Experiment, P extends
         }
     }
 
-    @Named
+    @Controller
     public static class Microarray
                         extends ExperimentDownloadSupplier<MicroarrayExperiment, MicroarrayRequestPreferences> {
 
@@ -194,7 +194,7 @@ public abstract class ExperimentDownloadSupplier<E extends Experiment, P extends
         private final MicroarrayProfileStreamFactory microarrayProfileStreamFactory;
         private final MicroarrayProfilesWriterFactory microarrayProfilesWriterFactory;
 
-        @Inject
+        @Autowired
         public Microarray(SolrQueryService solrQueryService,
                           MicroarrayProfileStreamFactory microarrayProfileStreamFactory,
                           MicroarrayProfilesWriterFactory microarrayProfilesWriterFactory) {
@@ -261,7 +261,7 @@ public abstract class ExperimentDownloadSupplier<E extends Experiment, P extends
         }
     }
 
-    @Named
+    @Controller
     public static class BulkDifferential
                         extends ExperimentDownloadFileSupplier<
                                 DifferentialExperiment, DifferentialRequestPreferences> {
@@ -270,7 +270,7 @@ public abstract class ExperimentDownloadSupplier<E extends Experiment, P extends
         private final SolrQueryService solrQueryService;
         private final BulkDifferentialProfilesWriterFactory bulkDifferentialProfilesWriterFactory;
 
-        @Inject
+        @Autowired
         public BulkDifferential(BulkDifferentialProfileStreamFactory bulkDifferentialProfileStreamFactory,
                                   SolrQueryService solrQueryService,
                                                BulkDifferentialProfilesWriterFactory bulkDifferentialProfilesWriterFactory) {
@@ -310,5 +310,4 @@ public abstract class ExperimentDownloadSupplier<E extends Experiment, P extends
                     getOne(experiment, preferences, "tsv", "All expression results in the experiment"));
         }
     }
-
 }

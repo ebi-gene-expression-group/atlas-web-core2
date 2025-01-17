@@ -12,7 +12,6 @@ import uk.ac.ebi.atlas.model.experiment.differential.DifferentialExperiment;
 import uk.ac.ebi.atlas.model.experiment.differential.microarray.MicroarrayExperiment;
 import uk.ac.ebi.atlas.resource.DataFileHub;
 
-import java.nio.file.Path;
 import java.text.MessageFormat;
 import java.util.Collection;
 

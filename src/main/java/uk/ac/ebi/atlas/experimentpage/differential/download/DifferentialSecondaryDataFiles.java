@@ -2,6 +2,8 @@ package uk.ac.ebi.atlas.experimentpage.differential.download;
 
 import com.google.common.collect.ImmutableList;
 import org.apache.commons.lang3.tuple.Pair;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import uk.ac.ebi.atlas.commons.readers.TsvStreamer;
 import uk.ac.ebi.atlas.commons.streams.ObjectInputStream;
 import uk.ac.ebi.atlas.experimentpage.differential.CanStreamSupplier;
@@ -11,8 +13,6 @@ import uk.ac.ebi.atlas.model.experiment.differential.microarray.MicroarrayExperi
 import uk.ac.ebi.atlas.model.resource.AtlasResource;
 import uk.ac.ebi.atlas.resource.DataFileHub;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.io.Writer;
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -27,11 +27,11 @@ public abstract class DifferentialSecondaryDataFiles<E extends DifferentialExper
         return ExternallyAvailableContent.ContentType.DATA;
     }
 
-    @Named
+    @Controller
     public static class RnaSeq extends DifferentialSecondaryDataFiles<DifferentialExperiment> {
         private final DataFileHub dataFileHub;
 
-        @Inject
+        @Autowired
         public RnaSeq(DataFileHub dataFileHub) {
             this.dataFileHub = dataFileHub;
         }
@@ -69,11 +69,11 @@ public abstract class DifferentialSecondaryDataFiles<E extends DifferentialExper
         }
     }
 
-    @Named
+    @Controller
     public static class Microarray extends DifferentialSecondaryDataFiles<MicroarrayExperiment> {
         private final DataFileHub dataFileHub;
 
-        @Inject
+        @Autowired
         public Microarray(DataFileHub dataFileHub) {
             this.dataFileHub = dataFileHub;
         }

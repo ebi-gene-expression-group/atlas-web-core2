@@ -1,13 +1,13 @@
 package uk.ac.ebi.atlas.experimentpage.qc;
 
 import org.apache.commons.lang3.tuple.Pair;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import uk.ac.ebi.atlas.experimentpage.differential.CanStreamSupplier;
 import uk.ac.ebi.atlas.model.download.ExternallyAvailableContent;
 import uk.ac.ebi.atlas.model.experiment.differential.DifferentialExperiment;
 import uk.ac.ebi.atlas.resource.DataFileHub;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.io.Writer;
 import java.util.Collection;
 import java.util.Collections;
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-@Named
+@Controller
 public class RnaSeqQcReport extends CanStreamSupplier<DifferentialExperiment> {
     @Override
     public ExternallyAvailableContent.ContentType contentType() {
@@ -24,7 +24,7 @@ public class RnaSeqQcReport extends CanStreamSupplier<DifferentialExperiment> {
 
     private final DataFileHub dataFileHub;
 
-    @Inject
+    @Autowired
     public RnaSeqQcReport(DataFileHub dataFileHub) {
         this.dataFileHub = dataFileHub;
     }

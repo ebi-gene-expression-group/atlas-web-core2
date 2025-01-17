@@ -1,10 +1,8 @@
 package uk.ac.ebi.atlas.experimentpage;
 
-import org.slf4j.LoggerFactory;
 import uk.ac.ebi.atlas.controllers.ResourceNotFoundException;
 import uk.ac.ebi.atlas.model.download.ExternallyAvailableContent;
 import uk.ac.ebi.atlas.model.experiment.Experiment;
-import org.slf4j.Logger;
 
 import javax.servlet.http.HttpServletResponse;
 import java.net.URI;

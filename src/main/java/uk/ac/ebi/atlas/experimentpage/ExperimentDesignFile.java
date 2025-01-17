@@ -1,19 +1,18 @@
 package uk.ac.ebi.atlas.experimentpage;
 
 import au.com.bytecode.opencsv.CSVWriter;
-import org.jetbrains.annotations.Nullable;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import uk.ac.ebi.atlas.commons.readers.TsvStreamer;
 import uk.ac.ebi.atlas.experimentpage.differential.CanStreamSupplier;
-import uk.ac.ebi.atlas.model.experiment.sample.ReportsGeneExpression;
 import uk.ac.ebi.atlas.model.download.ExternallyAvailableContent;
 import uk.ac.ebi.atlas.model.experiment.Experiment;
 import uk.ac.ebi.atlas.model.experiment.baseline.BaselineExperiment;
 import uk.ac.ebi.atlas.model.experiment.differential.DifferentialExperiment;
 import uk.ac.ebi.atlas.model.experiment.differential.microarray.MicroarrayExperiment;
+import uk.ac.ebi.atlas.model.experiment.sample.ReportsGeneExpression;
 import uk.ac.ebi.atlas.resource.DataFileHub;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.io.Writer;
@@ -22,7 +21,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public abstract class ExperimentDesignFile<E extends Experiment<? extends ReportsGeneExpression>>
@@ -34,25 +32,25 @@ public abstract class ExperimentDesignFile<E extends Experiment<? extends Report
         this.dataFileHub = dataFileHub;
     }
 
-    @Named
+    @Controller
     public static class Baseline extends ExperimentDesignFile<BaselineExperiment> {
-        @Inject
+        @Autowired
         public Baseline(DataFileHub dataFileHub) {
             super(dataFileHub);
         }
     }
 
-    @Named
+    @Controller
     public static class RnaSeq extends ExperimentDesignFile<DifferentialExperiment> {
-        @Inject
+        @Autowired
         public RnaSeq(DataFileHub dataFileHub) {
             super(dataFileHub);
         }
     }
 
-    @Named
+    @Controller
     public static class Microarray extends ExperimentDesignFile<MicroarrayExperiment> {
-        @Inject
+        @Autowired
         public Microarray(DataFileHub dataFileHub) {
             super(dataFileHub);
         }
