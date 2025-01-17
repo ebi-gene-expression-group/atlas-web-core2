@@ -1,13 +1,13 @@
 package uk.ac.ebi.atlas.profiles.differential;
 
 import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
 import uk.ac.ebi.atlas.model.experiment.differential.DifferentialExpression;
 import uk.ac.ebi.atlas.model.experiment.differential.Regulation;
 
-import javax.inject.Named;
 import java.util.function.Predicate;
 
-@Named
+@Controller
 @Scope("prototype")
 public class IsDifferentialExpressionAboveCutOff<X extends DifferentialExpression> implements Predicate<X> {
     private Regulation regulation;

@@ -2,22 +2,22 @@ package uk.ac.ebi.atlas.profiles.stream;
 
 import com.google.common.base.Preconditions;
 import org.jetbrains.annotations.Nullable;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import uk.ac.ebi.atlas.commons.streams.ObjectInputStream;
 import uk.ac.ebi.atlas.experimentpage.context.MicroarrayRequestContext;
-import uk.ac.ebi.atlas.model.experiment.sample.Contrast;
 import uk.ac.ebi.atlas.model.experiment.differential.microarray.MicroarrayExperiment;
 import uk.ac.ebi.atlas.model.experiment.differential.microarray.MicroarrayExpression;
 import uk.ac.ebi.atlas.model.experiment.differential.microarray.MicroarrayProfile;
+import uk.ac.ebi.atlas.model.experiment.sample.Contrast;
 import uk.ac.ebi.atlas.resource.DataFileHub;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.util.Collection;
 import java.util.Vector;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-@Named
+@Controller
 public class MicroarrayProfileStreamFactory
         extends ProfileStreamFactory<Contrast,
                                        MicroarrayExpression,
@@ -31,7 +31,7 @@ public class MicroarrayProfileStreamFactory
             MicroarrayRequestContext,
             MicroarrayProfile> profileStreamFactory;
 
-    @Inject
+    @Autowired
     public MicroarrayProfileStreamFactory(DataFileHub dataFileHub) {
         profileStreamFactory = new Impl(dataFileHub);
     }
@@ -43,11 +43,12 @@ public class MicroarrayProfileStreamFactory
         return profileStreamFactory.create(experiment, options, keepGeneIds);
     }
 
+    @Controller
     static class Impl
                  extends DifferentialProfileStreamFactory<
                             MicroarrayExpression, MicroarrayExperiment, MicroarrayRequestContext, MicroarrayProfile> {
 
-        @Inject
+        @Autowired
         Impl(DataFileHub dataFileHub) {
             super(dataFileHub);
         }

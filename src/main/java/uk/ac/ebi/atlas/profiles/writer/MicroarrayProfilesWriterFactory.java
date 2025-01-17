@@ -1,15 +1,15 @@
 package uk.ac.ebi.atlas.profiles.writer;
 
 import org.jetbrains.annotations.Nullable;
+import org.springframework.stereotype.Controller;
 import uk.ac.ebi.atlas.experimentpage.context.MicroarrayRequestContext;
-import uk.ac.ebi.atlas.model.experiment.sample.Contrast;
 import uk.ac.ebi.atlas.model.experiment.differential.microarray.MicroarrayExpression;
 import uk.ac.ebi.atlas.model.experiment.differential.microarray.MicroarrayProfile;
+import uk.ac.ebi.atlas.model.experiment.sample.Contrast;
 
-import javax.inject.Named;
 import java.util.stream.Stream;
 
-@Named
+@Controller
 public class MicroarrayProfilesWriterFactory
              extends DifferentialProfilesWriterFactory<
                         MicroarrayExpression, MicroarrayProfile, MicroarrayRequestContext> {

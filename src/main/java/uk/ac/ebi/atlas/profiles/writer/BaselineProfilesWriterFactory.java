@@ -1,17 +1,17 @@
 package uk.ac.ebi.atlas.profiles.writer;
 
+import org.springframework.stereotype.Controller;
 import uk.ac.ebi.atlas.experimentpage.context.BaselineRequestContext;
-import uk.ac.ebi.atlas.model.experiment.sample.AssayGroup;
 import uk.ac.ebi.atlas.model.ExpressionUnit;
 import uk.ac.ebi.atlas.model.experiment.baseline.BaselineExpression;
 import uk.ac.ebi.atlas.model.experiment.baseline.BaselineProfile;
+import uk.ac.ebi.atlas.model.experiment.sample.AssayGroup;
 
-import javax.inject.Named;
 import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@Named
+@Controller
 public class BaselineProfilesWriterFactory<U extends ExpressionUnit.Absolute>
              extends ProfilesWriterFactory<
                         AssayGroup, BaselineExpression, BaselineProfile, BaselineRequestContext<U>> {

@@ -3,21 +3,21 @@ package uk.ac.ebi.atlas.profiles.stream;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import org.jetbrains.annotations.Nullable;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import uk.ac.ebi.atlas.commons.streams.ObjectInputStream;
 import uk.ac.ebi.atlas.experimentpage.context.BulkDifferentialRequestContext;
-import uk.ac.ebi.atlas.model.experiment.differential.rnaseq.BulkDifferentialProfile;
-import uk.ac.ebi.atlas.model.experiment.sample.Contrast;
 import uk.ac.ebi.atlas.model.experiment.differential.DifferentialExperiment;
 import uk.ac.ebi.atlas.model.experiment.differential.DifferentialExpression;
+import uk.ac.ebi.atlas.model.experiment.differential.rnaseq.BulkDifferentialProfile;
+import uk.ac.ebi.atlas.model.experiment.sample.Contrast;
 import uk.ac.ebi.atlas.resource.DataFileHub;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.util.Collection;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-@Named
+@Controller
 public class BulkDifferentialProfileStreamFactory
         extends ProfileStreamFactory<Contrast,
                                      DifferentialExpression,
@@ -32,7 +32,7 @@ public class BulkDifferentialProfileStreamFactory
             BulkDifferentialProfile> profileStreamFactory;
 
 
-    @Inject
+    @Autowired
     public BulkDifferentialProfileStreamFactory(DataFileHub dataFileHub) {
         profileStreamFactory = new Impl(dataFileHub);
     }

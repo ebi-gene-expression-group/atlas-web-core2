@@ -1,12 +1,11 @@
 package uk.ac.ebi.atlas.profiles.differential;
 
+import org.springframework.stereotype.Controller;
 import uk.ac.ebi.atlas.model.experiment.differential.DifferentialProfile;
 import uk.ac.ebi.atlas.model.experiment.differential.DifferentialProfilesList;
 import uk.ac.ebi.atlas.profiles.GeneProfilesListBuilder;
 
-import javax.inject.Named;
-
-@Named
+@Controller
 public class DifferentialProfilesListBuilder<P extends DifferentialProfile>
              implements GeneProfilesListBuilder<DifferentialProfilesList<P>> {
     @Override

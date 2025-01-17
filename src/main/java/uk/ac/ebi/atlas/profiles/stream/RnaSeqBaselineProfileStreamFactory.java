@@ -4,22 +4,22 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import org.apache.commons.lang3.Validate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import uk.ac.ebi.atlas.commons.streams.ObjectInputStream;
-import uk.ac.ebi.atlas.model.experiment.sample.AssayGroup;
 import uk.ac.ebi.atlas.model.ExpressionUnit;
 import uk.ac.ebi.atlas.model.experiment.baseline.BaselineExperiment;
 import uk.ac.ebi.atlas.model.experiment.baseline.BaselineExpression;
 import uk.ac.ebi.atlas.model.experiment.baseline.BaselineProfile;
+import uk.ac.ebi.atlas.model.experiment.sample.AssayGroup;
 import uk.ac.ebi.atlas.profiles.baseline.BaselineProfileStreamOptions;
 import uk.ac.ebi.atlas.resource.DataFileHub;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Map;
 
-@Named
+@Controller
 public class RnaSeqBaselineProfileStreamFactory
         extends ProfileStreamFactory<AssayGroup,
                                      BaselineExpression,
@@ -33,7 +33,7 @@ public class RnaSeqBaselineProfileStreamFactory
                                               BaselineProfileStreamOptions<ExpressionUnit.Absolute.Rna>,
                                               BaselineProfile> profileStreamFactory;
 
-    @Inject
+    @Autowired
     public RnaSeqBaselineProfileStreamFactory(DataFileHub dataFileHub) {
         profileStreamFactory = new Impl(dataFileHub);
     }
@@ -45,10 +45,11 @@ public class RnaSeqBaselineProfileStreamFactory
         return profileStreamFactory.create(experiment, options, keepGeneIds);
     }
 
+    @Controller
     static class Impl
                  extends BaselineProfileStreamFactory<BaselineProfileStreamOptions<ExpressionUnit.Absolute.Rna>> {
 
-        @Inject
+        @Autowired
         Impl(DataFileHub dataFileHub) {
             super(dataFileHub);
         }

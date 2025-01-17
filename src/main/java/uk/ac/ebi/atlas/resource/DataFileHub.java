@@ -3,6 +3,8 @@ package uk.ac.ebi.atlas.resource;
 import au.com.bytecode.opencsv.CSVReader;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import uk.ac.ebi.atlas.commons.readers.MatrixMarketReader;
 import uk.ac.ebi.atlas.commons.readers.TsvStreamer;
 import uk.ac.ebi.atlas.commons.readers.XmlReader;
@@ -15,8 +17,6 @@ import uk.ac.ebi.atlas.model.resource.MatrixMarketFile;
 import uk.ac.ebi.atlas.model.resource.TsvFile;
 import uk.ac.ebi.atlas.model.resource.XmlFile;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
@@ -28,7 +28,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-@Named
+@Controller
 public class DataFileHub {
     protected final Path experimentsMageTabDirLocation;
     protected final Path experimentsAdminDirLocation;
@@ -100,7 +100,7 @@ public class DataFileHub {
     protected static final String SINGLE_CELL_SOFTWARE_USED_FILE_PATH_TEMPLATE = "{0}/{0}.software.tsv";
     protected static final String SINGLE_CELL_HDF5_PATH_TEMPLATE = "{0}/{0}.project.h5ad";
 
-    @Inject
+    @Autowired
     public DataFileHub(Path experimentsDirPath, Path experimentDesignDirPath) {
         this.experimentsMageTabDirLocation = experimentsDirPath.resolve("magetab");
         this.experimentsAdminDirLocation = experimentsDirPath.resolve("admin");
