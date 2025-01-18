@@ -5,8 +5,6 @@ import com.google.common.collect.ImmutableSet;
 import com.google.gson.JsonSyntaxException;
 import org.apache.commons.lang3.StringUtils;
 
-import java.io.UncheckedIOException;
-import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
