@@ -1,14 +1,13 @@
 package uk.ac.ebi.atlas.web.interceptors;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequestWrapper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.util.StopWatch;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
@@ -35,7 +34,7 @@ public class TimingInterceptorTest {
     }
 
     @Test
-    public void testPreHandle() {
+    public void testPreHandle() throws Exception {
         assertThat(subject.preHandle(requestWrapper, null, null)).isTrue();
 
         StopWatch localStopWatch = (StopWatch) requestWrapper.getAttribute(STOP_WATCH);

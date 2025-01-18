@@ -1,18 +1,17 @@
 package uk.ac.ebi.atlas.web.interceptors;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.util.StopWatch;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
 import org.springframework.lang.Nullable;
-import javax.inject.Named;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import org.springframework.stereotype.Controller;
+import org.springframework.util.StopWatch;
+import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
 
-@Named
-public class TimingInterceptor extends HandlerInterceptorAdapter {
+@Controller
+public class TimingInterceptor implements HandlerInterceptor {
     private static final Logger LOGGER = LoggerFactory.getLogger(TimingInterceptor.class);
 
     static final String STOP_WATCH = "requestURLStopWatch";
