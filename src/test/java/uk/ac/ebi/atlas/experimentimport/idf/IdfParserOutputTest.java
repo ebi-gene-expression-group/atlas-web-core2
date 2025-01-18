@@ -1,6 +1,5 @@
 package uk.ac.ebi.atlas.experimentimport.idf;
 
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import org.junit.jupiter.api.Test;
 import uk.ac.ebi.atlas.model.Publication;

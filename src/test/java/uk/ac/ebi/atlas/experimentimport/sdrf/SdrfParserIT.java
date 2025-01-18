@@ -7,6 +7,7 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.test.context.ContextConfiguration;
@@ -15,7 +16,6 @@ import uk.ac.ebi.atlas.configuration.TestConfig;
 import uk.ac.ebi.atlas.resource.DataFileHub;
 import uk.ac.ebi.atlas.testutils.JdbcUtils;
 
-import javax.inject.Inject;
 import javax.sql.DataSource;
 import java.nio.file.Path;
 
@@ -27,13 +27,13 @@ class SdrfParserIT {
     @ContextConfiguration(classes = TestConfig.class)
     @TestInstance(TestInstance.Lifecycle.PER_CLASS)
     class Bulk {
-        @Inject
+        @Autowired
         private DataSource dataSource;
 
-        @Inject
+        @Autowired
         private Path dataFilesPath;
 
-        @Inject
+        @Autowired
         private JdbcUtils jdbcUtils;
 
         @BeforeAll

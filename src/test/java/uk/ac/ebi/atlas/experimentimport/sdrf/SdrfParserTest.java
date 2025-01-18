@@ -7,8 +7,6 @@ import uk.ac.ebi.atlas.testutils.MockDataFileHub;
 import uk.ac.ebi.atlas.testutils.RandomDataTestUtils;
 
 import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

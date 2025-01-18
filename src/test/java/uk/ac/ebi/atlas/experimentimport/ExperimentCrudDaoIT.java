@@ -5,6 +5,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -14,7 +15,6 @@ import uk.ac.ebi.atlas.controllers.ResourceNotFoundException;
 import uk.ac.ebi.atlas.model.experiment.ExperimentType;
 import uk.ac.ebi.atlas.testutils.JdbcUtils;
 
-import javax.inject.Inject;
 import java.util.Date;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
@@ -35,13 +35,13 @@ class ExperimentCrudDaoIT {
     private static final ThreadLocalRandom RNG = ThreadLocalRandom.current();
     private static final int MAXIMUM_EXPERIMENT_COUNT = 1000;
 
-    @Inject
+    @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    @Inject
+    @Autowired
     private JdbcUtils jdbcUtils;
 
-    @Inject
+    @Autowired
     private ExperimentCrudDao subject;
 
     @AfterEach
