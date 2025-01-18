@@ -1,17 +1,16 @@
 package uk.ac.ebi.atlas.solr.analytics.differential;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import uk.ac.ebi.atlas.search.SemanticQuery;
 import uk.ac.ebi.atlas.solr.analytics.query.AnalyticsQueryClient;
 
-import javax.inject.Inject;
-import javax.inject.Named;
-
-@Named
+@Controller
 public class DifferentialAnalyticsSearchDao {
 
     private final AnalyticsQueryClient analyticsQueryClient;
 
-    @Inject
+    @Autowired
     public DifferentialAnalyticsSearchDao(AnalyticsQueryClient analyticsQueryClient) {
         this.analyticsQueryClient = analyticsQueryClient;
     }

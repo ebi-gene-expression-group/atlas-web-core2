@@ -6,11 +6,13 @@ import com.jayway.jsonpath.JsonPath;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import uk.ac.ebi.atlas.search.SemanticQuery;
@@ -18,8 +20,6 @@ import uk.ac.ebi.atlas.search.SemanticQueryTerm;
 import uk.ac.ebi.atlas.solr.cloud.collections.BulkAnalyticsCollectionProxy;
 import uk.ac.ebi.atlas.utils.ResourceUtils;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.text.MessageFormat;
 import java.util.List;
 import java.util.Random;
@@ -33,7 +33,7 @@ import static uk.ac.ebi.atlas.solr.cloud.collections.BulkAnalyticsCollectionProx
 import static uk.ac.ebi.atlas.solr.cloud.collections.BulkAnalyticsCollectionProxy.EXPERIMENT_ACCESSION;
 import static uk.ac.ebi.atlas.solr.cloud.collections.BulkAnalyticsCollectionProxy.SPECIES;
 
-@Named
+@Controller
 @Scope("prototype")
 public class AnalyticsQueryClient {
     private static final Logger LOGGER = LoggerFactory.getLogger(AnalyticsQueryClient.class);
@@ -71,7 +71,7 @@ public class AnalyticsQueryClient {
                 ")" +
             ")";
 
-    @Inject
+    @Autowired
     public AnalyticsQueryClient(
             RestTemplate restTemplate,
             HttpHeaders httpHeadersForSolrAuthentication,

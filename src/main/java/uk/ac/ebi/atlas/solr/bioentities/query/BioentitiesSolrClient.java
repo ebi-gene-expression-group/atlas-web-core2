@@ -10,10 +10,10 @@ import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import uk.ac.ebi.atlas.solr.bioentities.BioentityPropertyName;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.Collection;
@@ -23,14 +23,14 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Named
+@Controller
 public class BioentitiesSolrClient {
     private static final Logger LOGGER = LoggerFactory.getLogger(BioentitiesSolrClient.class);
     private static final int ROWS = 1000;
 
     private SolrClient solrClient;
 
-    @Inject
+    @Autowired
     public BioentitiesSolrClient(SolrClient solrClientBioentities) {
         this.solrClient = solrClientBioentities;
     }

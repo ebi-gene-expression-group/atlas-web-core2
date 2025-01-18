@@ -4,20 +4,20 @@ import com.google.common.base.Stopwatch;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import uk.ac.ebi.atlas.search.SemanticQuery;
 import uk.ac.ebi.atlas.search.SemanticQueryTerm;
 import uk.ac.ebi.atlas.solr.bioentities.query.builders.BioentityIdentifierQueryBuilder;
 import uk.ac.ebi.atlas.species.Species;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.text.MessageFormat;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import static uk.ac.ebi.atlas.solr.cloud.collections.BioentitiesCollectionProxy.asBioentitiesCollectionQuery;
 
-@Named
+@Controller
 // Can be singleton because HttpSolrClient is thread safe, do not to add any other non thread safe state!
 public class SolrQueryService {
     private static final Logger LOGGER = LoggerFactory.getLogger(SolrQueryService.class);
@@ -25,7 +25,7 @@ public class SolrQueryService {
     private static final String BIOENTITY_IDENTIFIER_FIELD = "bioentity_identifier";
     private final BioentitiesSolrClient solrClient;
 
-    @Inject
+    @Autowired
     public SolrQueryService(BioentitiesSolrClient solrClient) {
         this.solrClient = solrClient;
     }
