@@ -5,13 +5,13 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSortedMap;
 import com.google.common.collect.MapDifference;
 import com.google.common.collect.Maps;
+import jakarta.annotation.PostConstruct;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
-import javax.annotation.PostConstruct;
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
@@ -19,14 +19,14 @@ import java.util.Collection;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static uk.ac.ebi.atlas.species.SpeciesProperties.createUnknownPropertiesWithSpeciesName;
 
-@Named
+@Controller
 public class SpeciesPropertiesTrader {
     private static final Logger LOGGER = LoggerFactory.getLogger(SpeciesPropertiesTrader.class);
 
     private SpeciesPropertiesDao speciesPropertiesDao;
     private ImmutableSortedMap<String, SpeciesProperties> nameToSpecies = ImmutableSortedMap.of();
 
-    @Inject
+    @Autowired
     public void setSpeciesPropertiesDao(SpeciesPropertiesDao speciesPropertiesDao) {
         this.speciesPropertiesDao = speciesPropertiesDao;
     }

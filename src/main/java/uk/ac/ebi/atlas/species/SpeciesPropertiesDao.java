@@ -4,20 +4,20 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import uk.ac.ebi.atlas.model.resource.AtlasResource;
 import uk.ac.ebi.atlas.model.resource.JsonFile;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.io.IOException;
 import java.nio.file.Path;
 
-@Named
+@Controller
 public class SpeciesPropertiesDao {
 
     private final AtlasResource<JsonReader> speciesPropertiesJsonFile;
 
-    @Inject
+    @Autowired
     public SpeciesPropertiesDao(Path speciesPropertiesFilePath) {
         speciesPropertiesJsonFile =
                 new JsonFile.ReadOnly(

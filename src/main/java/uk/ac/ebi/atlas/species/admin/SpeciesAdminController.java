@@ -4,14 +4,13 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import uk.ac.ebi.atlas.controllers.JsonExceptionHandlingController;
 import uk.ac.ebi.atlas.species.SpeciesPropertiesTrader;
-
-import javax.inject.Inject;
 
 @RestController
 @Scope("request")
@@ -40,7 +39,7 @@ public class SpeciesAdminController extends JsonExceptionHandlingController {
 
     private final SpeciesPropertiesTrader speciesPropertiesTrader;
 
-    @Inject
+    @Autowired
     public SpeciesAdminController(SpeciesPropertiesTrader speciesPropertiesTrader) {
         this.speciesPropertiesTrader = speciesPropertiesTrader;
     }

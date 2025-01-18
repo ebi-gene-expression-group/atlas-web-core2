@@ -1,13 +1,12 @@
 package uk.ac.ebi.atlas.species.admin;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import uk.ac.ebi.atlas.controllers.JsonExceptionHandlingController;
 import uk.ac.ebi.atlas.species.SpeciesPropertiesTrader;
-
-import javax.inject.Inject;
 
 import static uk.ac.ebi.atlas.utils.GsonProvider.GSON;
 
@@ -16,7 +15,7 @@ import static uk.ac.ebi.atlas.utils.GsonProvider.GSON;
 public class SpeciesController extends JsonExceptionHandlingController {
     private final SpeciesPropertiesTrader speciesPropertiesTrader;
 
-    @Inject
+    @Autowired
     public SpeciesController(SpeciesPropertiesTrader speciesPropertiesTrader) {
         this.speciesPropertiesTrader = speciesPropertiesTrader;
     }
