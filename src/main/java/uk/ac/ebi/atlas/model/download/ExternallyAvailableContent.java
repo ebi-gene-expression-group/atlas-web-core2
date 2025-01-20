@@ -4,10 +4,10 @@ import com.google.auto.value.AutoValue;
 import com.google.common.base.Objects;
 import com.google.common.collect.ImmutableSet;
 import com.google.gson.JsonObject;
+import jakarta.servlet.http.HttpServletResponse;
 import uk.ac.ebi.atlas.controllers.ResourceNotFoundException;
 import uk.ac.ebi.atlas.model.experiment.Experiment;
 
-import javax.servlet.http.HttpServletResponse;
 import java.net.URI;
 import java.text.MessageFormat;
 import java.util.Collection;
