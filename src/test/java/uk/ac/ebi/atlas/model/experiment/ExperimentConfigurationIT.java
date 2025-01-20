@@ -7,6 +7,7 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.test.context.ContextConfiguration;
@@ -16,7 +17,6 @@ import uk.ac.ebi.atlas.resource.DataFileHub;
 import uk.ac.ebi.atlas.testutils.JdbcUtils;
 import uk.ac.ebi.atlas.trader.ConfigurationTrader;
 
-import javax.inject.Inject;
 import javax.sql.DataSource;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -32,16 +32,16 @@ import static uk.ac.ebi.atlas.model.experiment.ExperimentType.MICROARRAY_2COLOUR
 @ContextConfiguration(classes = TestConfig.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class ExperimentConfigurationIT {
-    @Inject
+    @Autowired
     private DataSource dataSource;
 
-    @Inject
+    @Autowired
     private JdbcUtils jdbcUtils;
 
-    @Inject
+    @Autowired
     private Path experimentsDirPath;
 
-    @Inject
+    @Autowired
     private Path experimentDesignDirPath;
 
     private ExperimentConfiguration subject;

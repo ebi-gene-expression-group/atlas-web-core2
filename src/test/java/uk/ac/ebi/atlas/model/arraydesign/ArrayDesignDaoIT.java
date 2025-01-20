@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
@@ -15,7 +16,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import uk.ac.ebi.atlas.configuration.TestConfig;
 import uk.ac.ebi.atlas.testutils.JdbcUtils;
 
-import javax.inject.Inject;
 import javax.sql.DataSource;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -30,16 +30,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ArrayDesignDaoIT {
     private final static ThreadLocalRandom RNG = ThreadLocalRandom.current();
 
-    @Inject
+    @Autowired
     private DataSource dataSource;
 
-    @Inject
+    @Autowired
     private JdbcTemplate bulkJdbcTemplate;
 
-    @Inject
+    @Autowired
     private JdbcUtils jdbcUtils;
 
-    @Inject
+    @Autowired
     private ArrayDesignDao subject;
 
     private static final String SELECT_IDENTIFIERS_WITH_DESIGNELEMENT_COUNT =
