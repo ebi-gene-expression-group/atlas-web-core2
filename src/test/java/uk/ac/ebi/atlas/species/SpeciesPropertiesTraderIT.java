@@ -3,11 +3,10 @@ package uk.ac.ebi.atlas.species;
 import com.google.common.collect.ImmutableMap;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import uk.ac.ebi.atlas.configuration.TestConfig;
-
-import javax.inject.Inject;
 
 import java.util.Collection;
 
@@ -23,7 +22,7 @@ import static org.junit.Assert.assertThat;
 @ContextConfiguration(classes = TestConfig.class)
 public class SpeciesPropertiesTraderIT {
 
-    @Inject
+    @Autowired
     private SpeciesPropertiesTrader subject = new SpeciesPropertiesTrader();
 
     // The following tests are actually validating species-properties.json

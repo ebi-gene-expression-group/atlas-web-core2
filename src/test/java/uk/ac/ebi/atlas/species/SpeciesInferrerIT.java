@@ -2,13 +2,12 @@ package uk.ac.ebi.atlas.species;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import uk.ac.ebi.atlas.configuration.TestConfig;
 import uk.ac.ebi.atlas.search.SemanticQuery;
 import uk.ac.ebi.atlas.search.SemanticQueryTerm;
-
-import javax.inject.Inject;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -32,7 +31,7 @@ public class SpeciesInferrerIT {
                     SemanticQueryTerm.create("OS01G0101700", "ensgene"),
                     SemanticQueryTerm.create("ENSMUSG00000002055", "ensgene"));
 
-    @Inject
+    @Autowired
     private SpeciesInferrer subject;
 
     @Test

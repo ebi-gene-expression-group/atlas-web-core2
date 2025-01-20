@@ -1,14 +1,12 @@
 package uk.ac.ebi.atlas.species;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import uk.ac.ebi.atlas.configuration.TestConfig;
-
-import javax.inject.Inject;
 
 import java.util.HashSet;
 
@@ -17,10 +15,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = TestConfig.class)
 class SpeciesFactoryIT {
-    @Inject
+    @Autowired
     private SpeciesFactory subject;
 
-    @Inject
+    @Autowired
     private SpeciesPropertiesTrader speciesPropertiesTrader;
 
     @Test
