@@ -11,6 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import uk.ac.ebi.atlas.configuration.TestConfig;
@@ -19,7 +20,6 @@ import uk.ac.ebi.atlas.solr.cloud.TupleStreamer;
 import uk.ac.ebi.atlas.solr.cloud.collections.BulkAnalyticsCollectionProxy;
 import uk.ac.ebi.atlas.solr.cloud.search.SolrQueryBuilder;
 
-import javax.inject.Inject;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -36,7 +36,7 @@ import static uk.ac.ebi.atlas.solr.cloud.collections.BulkAnalyticsCollectionProx
 class FacetStreamBuilderIT {
     private static final String E_MTAB_5214 = "E-MTAB-5214";
 
-    @Inject
+    @Autowired
     private SolrCloudCollectionProxyFactory collectionProxyFactory;
 
     private BulkAnalyticsCollectionProxy bulkAnalyticsCollectionProxy;

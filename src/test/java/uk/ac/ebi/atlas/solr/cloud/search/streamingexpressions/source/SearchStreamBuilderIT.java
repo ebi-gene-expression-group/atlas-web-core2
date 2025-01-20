@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableSet;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import uk.ac.ebi.atlas.configuration.TestConfig;
@@ -11,8 +12,6 @@ import uk.ac.ebi.atlas.solr.cloud.SolrCloudCollectionProxyFactory;
 import uk.ac.ebi.atlas.solr.cloud.TupleStreamer;
 import uk.ac.ebi.atlas.solr.cloud.collections.BioentitiesCollectionProxy;
 import uk.ac.ebi.atlas.solr.cloud.search.SolrQueryBuilder;
-
-import javax.inject.Inject;
 
 import java.io.UncheckedIOException;
 
@@ -30,7 +29,7 @@ import static uk.ac.ebi.atlas.solr.cloud.collections.BioentitiesCollectionProxy.
 // Some of the tests in this class are executed against the scxa-analytics collection, and have been moved to
 // atlas-web-single-cell/app
 class SearchStreamBuilderIT {
-    @Inject
+    @Autowired
     private SolrCloudCollectionProxyFactory collectionProxyFactory;
 
     private BioentitiesCollectionProxy bioentitiesCollectionProxy;

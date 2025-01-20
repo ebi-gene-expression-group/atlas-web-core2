@@ -3,12 +3,12 @@ package uk.ac.ebi.atlas.solr.analytics.baseline;
 import com.google.common.collect.ImmutableList;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import uk.ac.ebi.atlas.configuration.TestConfig;
 import uk.ac.ebi.atlas.search.SemanticQuery;
 
-import javax.inject.Inject;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +19,7 @@ import static org.junit.Assert.assertThat;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TestConfig.class)
 public class BaselineAnalyticsSearchDaoIT {
-    @Inject
+    @Autowired
     private BaselineAnalyticsSearchDao subject;
 
     // In case of failure check:

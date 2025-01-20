@@ -5,6 +5,7 @@ import org.apache.solr.common.SolrInputDocument;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import uk.ac.ebi.atlas.configuration.TestConfig;
@@ -12,8 +13,6 @@ import uk.ac.ebi.atlas.model.experiment.ExperimentType;
 import uk.ac.ebi.atlas.model.experiment.differential.Regulation;
 import uk.ac.ebi.atlas.solr.EmbeddedSolrCollectionProxyFactory;
 import uk.ac.ebi.atlas.solr.cloud.search.SolrQueryBuilder;
-
-import javax.inject.Inject;
 
 import java.util.Collection;
 
@@ -76,7 +75,7 @@ class BulkAnalyticsCollectionProxyIT {
                             "c infertility",
                     false);
 
-    @Inject
+    @Autowired
     private EmbeddedSolrCollectionProxyFactory embeddedSolrCollectionProxyFactory;
 
     private BulkAnalyticsCollectionProxy subject;
