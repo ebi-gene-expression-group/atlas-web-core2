@@ -3,11 +3,10 @@ package uk.ac.ebi.atlas.utils;
 import com.google.common.collect.ImmutableSet;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import uk.ac.ebi.atlas.configuration.TestConfig;
-
-import javax.inject.Inject;
 
 import java.util.Optional;
 import java.util.Set;
@@ -30,7 +29,7 @@ public class ReactomeClientEIT {
             "R-HSA-50518", "R-HSA-50522", "R-HSA-50662", "R-HSA-50690", "R-HSA-50757",
             "R-HSA-50825", "R-HSA-50845", "R-HSA-50847", "R-HSA-50849", "R-HSA-50851");
 
-    @Inject
+    @Autowired
     private ReactomeClient subject;
 
     @Test
