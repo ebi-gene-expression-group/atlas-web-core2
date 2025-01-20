@@ -11,6 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
@@ -19,14 +20,11 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import uk.ac.ebi.atlas.configuration.TestConfig;
 import uk.ac.ebi.atlas.testutils.JdbcUtils;
 
-import javax.inject.Inject;
 import javax.sql.DataSource;
-
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.jdbc.JdbcTestUtils.deleteFromTables;
-import static org.springframework.test.jdbc.JdbcTestUtils.dropTables;
 import static uk.ac.ebi.atlas.testutils.RandomDataTestUtils.generateRandomExperimentAccession;
 
 @ExtendWith({SpringExtension.class, MockitoExtension.class})
@@ -34,16 +32,16 @@ import static uk.ac.ebi.atlas.testutils.RandomDataTestUtils.generateRandomExperi
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class ExperimentCollectionsFinderDaoIT {
-    @Inject
+    @Autowired
     private DataSource dataSource;
 
-    @Inject
+    @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    @Inject
+    @Autowired
     private JdbcUtils jdbcUtils;
 
-    @Inject
+    @Autowired
     private ExperimentCollectionsFinderDao subject;
 
     @BeforeAll
