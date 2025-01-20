@@ -7,6 +7,7 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.test.context.ContextConfiguration;
@@ -17,9 +18,7 @@ import uk.ac.ebi.atlas.solr.cloud.SolrCloudCollectionProxyFactory;
 import uk.ac.ebi.atlas.solr.cloud.collections.BulkAnalyticsCollectionProxy;
 import uk.ac.ebi.atlas.testutils.JdbcUtils;
 
-import javax.inject.Inject;
 import javax.sql.DataSource;
-
 import java.util.stream.Stream;
 
 import static org.mockito.Mockito.when;
@@ -28,16 +27,16 @@ import static org.mockito.Mockito.when;
 @ContextConfiguration(classes = TestConfig.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class AnalyticsIndexerServiceIT {
-    @Inject
+    @Autowired
     DataSource dataSource;
 
-    @Inject
+    @Autowired
     JdbcUtils jdbcUtils;
 
-    @Inject
+    @Autowired
     private EmbeddedSolrCollectionProxyFactory embeddedSolrCollectionProxyFactory;
 
-    @Inject
+    @Autowired
     private ExperimentDataPointStreamFactory experimentDataPointStreamFactory;
 
     @Mock

@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -12,7 +13,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import uk.ac.ebi.atlas.commons.streams.ObjectInputStream;
 import uk.ac.ebi.atlas.configuration.TestConfig;
 
-import javax.inject.Inject;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
@@ -32,7 +32,7 @@ public class BaselineCoexpressionProfileDaoIT {
     private static final int GENE_ID_CODE_LENGTH = 11;
 
     // Used to check the DB
-    @Inject
+    @Autowired
     private JdbcTemplate jdbcTemplate;
 
     @Mock

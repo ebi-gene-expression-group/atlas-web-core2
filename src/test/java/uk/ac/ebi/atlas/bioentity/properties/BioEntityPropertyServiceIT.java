@@ -3,12 +3,11 @@ package uk.ac.ebi.atlas.bioentity.properties;
 import com.google.common.collect.ImmutableSet;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import uk.ac.ebi.atlas.configuration.TestConfig;
 import uk.ac.ebi.atlas.solr.bioentities.BioentityPropertyName;
-
-import javax.inject.Inject;
 
 import static org.hamcrest.Matchers.hasEntry;
 import static org.junit.Assert.assertThat;
@@ -16,7 +15,7 @@ import static org.junit.Assert.assertThat;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TestConfig.class)
 public class BioEntityPropertyServiceIT {
-    @Inject
+    @Autowired
     private BioEntityPropertyService subject;
 
     @Test

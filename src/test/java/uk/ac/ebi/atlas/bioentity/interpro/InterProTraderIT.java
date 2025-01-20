@@ -5,12 +5,11 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import uk.ac.ebi.atlas.configuration.TestConfig;
 import uk.ac.ebi.atlas.model.OntologyTerm;
-
-import javax.inject.Inject;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -26,10 +25,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 class InterProTraderIT {
     private static final ThreadLocalRandom RNG = ThreadLocalRandom.current();
 
-    @Inject
+    @Autowired
     private Path interProFilePath;
 
-    @Inject
+    @Autowired
     private InterProTrader subject;
 
     @ParameterizedTest

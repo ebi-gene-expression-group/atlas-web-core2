@@ -5,13 +5,12 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import uk.ac.ebi.atlas.configuration.TestConfig;
 import uk.ac.ebi.atlas.species.SpeciesFactory;
 import uk.ac.ebi.atlas.testutils.SolrUtils;
-
-import javax.inject.Inject;
 
 import java.util.stream.Stream;
 
@@ -25,16 +24,16 @@ import static uk.ac.ebi.atlas.solr.cloud.collections.BulkAnalyticsCollectionProx
 @ContextConfiguration(classes = TestConfig.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class BioEntityCardModelFactoryIT {
-    @Inject
+    @Autowired
     private SolrUtils solrUtils;
 
-    @Inject
+    @Autowired
     private SpeciesFactory speciesFactory;
 
-    @Inject
+    @Autowired
     private BioEntityPropertyDao bioentityPropertyDao;
 
-    @Inject
+    @Autowired
     private BioEntityCardModelFactory subject;
 
     @ParameterizedTest

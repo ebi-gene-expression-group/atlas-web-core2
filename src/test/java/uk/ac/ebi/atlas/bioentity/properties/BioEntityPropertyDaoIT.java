@@ -3,12 +3,11 @@ package uk.ac.ebi.atlas.bioentity.properties;
 import com.google.common.collect.ImmutableList;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import uk.ac.ebi.atlas.configuration.TestConfig;
 import uk.ac.ebi.atlas.solr.bioentities.BioentityPropertyName;
-
-import javax.inject.Inject;
 
 import java.util.Map;
 import java.util.Set;
@@ -26,7 +25,7 @@ class BioEntityPropertyDaoIT {
     private static final int MIN_NUMBER_OF_GO_TERMS = 20;
     private static final int MIN_NUMBER_OF_DESIGN_ELEMENTS = 30;
 
-    @Inject
+    @Autowired
     private BioEntityPropertyDao subject;
 
     @Test

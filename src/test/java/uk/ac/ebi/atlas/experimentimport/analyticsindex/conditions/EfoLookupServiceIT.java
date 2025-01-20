@@ -3,11 +3,10 @@ package uk.ac.ebi.atlas.experimentimport.analyticsindex.conditions;
 import com.google.common.collect.ImmutableSet;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import uk.ac.ebi.atlas.configuration.TestConfig;
-
-import javax.inject.Inject;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -23,7 +22,7 @@ class EfoLookupServiceIT {
     private static final int GO_0023014_PARENTS = 16;
     private static final int COMMON_PARENTS = 2;
 
-    @Inject
+    @Autowired
     private EfoLookupService subject;
 
     @Test

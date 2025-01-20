@@ -2,14 +2,13 @@ package uk.ac.ebi.atlas.bioentity.properties;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import uk.ac.ebi.atlas.configuration.TestConfig;
 import uk.ac.ebi.atlas.solr.bioentities.BioentityPropertyName;
 import uk.ac.ebi.atlas.species.Species;
 import uk.ac.ebi.atlas.species.SpeciesFactory;
-
-import javax.inject.Inject;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static uk.ac.ebi.atlas.solr.bioentities.BioentityPropertyName.DESCRIPTION;
@@ -26,7 +25,7 @@ import static uk.ac.ebi.atlas.solr.bioentities.BioentityPropertyName.WBPSTRANSCR
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = TestConfig.class)
 class BioEntityCardPropertiesIT {
-    @Inject
+    @Autowired
     private SpeciesFactory speciesFactory;
 
     @Test
