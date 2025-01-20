@@ -2,6 +2,7 @@ package uk.ac.ebi.atlas.monitoring;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
@@ -10,18 +11,16 @@ import org.springframework.test.jdbc.JdbcTestUtils;
 import org.springframework.transaction.annotation.Transactional;
 import uk.ac.ebi.atlas.configuration.TestConfig;
 
-import javax.inject.Inject;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = TestConfig.class)
 @Transactional
 class PostgreSqlHealthServiceIT {
-    @Inject
+    @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    @Inject
+    @Autowired
     private PostgreSqlHealthService subject;
 
     @Test
