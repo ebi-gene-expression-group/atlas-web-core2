@@ -13,14 +13,14 @@ java {
 
 repositories {
     mavenCentral()
-//    // For ae-efo-loader
-//    // Ideally mavenLocal() would be the last repo to have as fallback, but we won’t have access to our Artifactory
-//    // unless we’re on the VPN, in which case the build fails
-//    mavenLocal()
-//    maven {
-//        url "http://45.88.81.166/artifactory/maven-local/"
-//        allowInsecureProtocol true
-//    }
+    // For ae-efo-loader
+    // Ideally mavenLocal() would be the last repo to have as fallback, but we won’t have access to our Artifactory
+    // unless we’re on the VPN, in which case the build fails
+    mavenLocal()
+    maven {
+        url "http://45.88.81.166/artifactory/maven-local/"
+        allowInsecureProtocol true
+    }
 }
 
 dependencyManagement {
@@ -55,7 +55,7 @@ dependencies {
         exclude group: 'org.apache.logging.log4j', module: 'log4j-slf4j-impl'
     }
 
-//    implementation 'uk.ac.ebi.fg:ae-efo-loader:1.0.5'
+    implementation 'uk.ac.ebi.fg:ae-efo-loader:1.0.5'
 
     compileOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
