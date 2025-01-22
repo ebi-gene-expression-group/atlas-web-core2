@@ -1,0 +1,10 @@
+{
+  "userProps":{"update.autoCreateFields":"false"},
+  "updateProcessor":{"dedupe":{
+      "name":"dedupe",
+      "class":"solr.processor.SignatureUpdateProcessorFactory",
+      "enabled":"true",
+      "signatureField":"id",
+      "overwriteDupes":"true",
+      "fields":"experiment_accession,bioentity_identifier,assay_group_id,contrast_id",
+      "signatureClass":"solr.processor.Lookup3Signature"}}}

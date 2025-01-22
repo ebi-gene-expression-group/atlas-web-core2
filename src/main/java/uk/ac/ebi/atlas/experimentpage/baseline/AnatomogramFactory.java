@@ -1,0 +1,88 @@
+package uk.ac.ebi.atlas.experimentpage.baseline;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonNull;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
+import org.jetbrains.annotations.Nullable;
+import uk.ac.ebi.atlas.model.experiment.sample.AssayGroup;
+import uk.ac.ebi.atlas.model.OntologyTerm;
+import uk.ac.ebi.atlas.model.experiment.baseline.BaselineExperiment;
+import uk.ac.ebi.atlas.model.experiment.sdrf.Factor;
+import uk.ac.ebi.atlas.species.Species;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+public class AnatomogramFactory {
+    public static final String FACTOR_TYPE_WITH_ANATOMOGRAM = "ORGANISM_PART";
+
+    public Optional<JsonElement> get(String queryFactorType, Species species, Iterable<OntologyTerm> ontologyTerms) {
+        if (FACTOR_TYPE_WITH_ANATOMOGRAM.equalsIgnoreCase(queryFactorType)) {
+            return Optional.of(getAnatomogramProperties(species, ontologyTerms));
+        } else {
+            return Optional.empty();
+        }
+    }
+
+    public Optional<JsonElement> get(List<AssayGroup> selectedDataColumns,
+                                     final BaselineExperiment baselineExperiment) {
+        Set<String> s =
+                selectedDataColumns.stream()
+                        .map(
+                                assayGroup ->
+                                        safeFactorValue(
+                                                baselineExperiment
+                                                        .getFactors(assayGroup)
+                                                        .factorOfType(FACTOR_TYPE_WITH_ANATOMOGRAM)))
+                        .filter(Optional::isPresent)
+                        .map(Optional::get)
+                        .collect(Collectors.toSet());
+        if (s.size() > 0) {
+            return Optional.of(
+                    getAnatomogramProperties(
+                            baselineExperiment.getSpecies(),
+                            selectedDataColumns.stream()
+                                    .flatMap(
+                                            assayGroup ->
+                                                    baselineExperiment
+                                                            .getFactors(assayGroup)
+                                                            .factorOfType(FACTOR_TYPE_WITH_ANATOMOGRAM)
+                                                            .getValueOntologyTerms().stream())
+                                    .collect(Collectors.toList())));
+        } else {
+            return Optional.empty();
+        }
+    }
+
+    private Optional<String> safeFactorValue(@Nullable Factor factor) {
+        if (factor == null) {
+            return Optional.empty();
+        } else {
+            return Optional.of(factor.getValue());
+        }
+    }
+
+    private JsonElement getAnatomogramProperties(Species species, Iterable<OntologyTerm> ontologyTerms) {
+        JsonObject anatomogramProperties = new JsonObject();
+
+        anatomogramProperties.addProperty("species", species.getReferenceName().replace(" ", "_"));
+        anatomogramProperties.add("allSvgPathIds", ontologyTermsAsJson(ontologyTerms));
+
+        return anatomogramProperties;
+    }
+
+    private JsonElement ontologyTermsAsJson(Iterable<OntologyTerm> ontologyTerms) {
+        JsonArray result = new JsonArray();
+
+        for (OntologyTerm ontologyTerm : ontologyTerms) {
+            result.add(new JsonPrimitive(ontologyTerm.accession()));
+        }
+
+        return result.size() == 0 ? JsonNull.INSTANCE : result;
+    }
+
+}

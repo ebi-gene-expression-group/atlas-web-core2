@@ -1,0 +1,28 @@
+{
+  "kingdom": {
+    "type": "terms",
+    "field": "kingdom"
+  },
+  "species": {
+    "type": "terms",
+    "field": "species",
+    "limit": 40
+  },
+  "experimentType": {
+    "type": "terms",
+    "field": "experiment_type"
+  },
+  "factors": {
+    "type": "terms",
+    "field": "factors",
+    "limit": 100
+  },
+  "numReplicates": {
+    "type": "terms",
+    "field": "num_replicates"
+  },
+  "regulation": {
+    "type": "terms",
+    "field": "regulation"
+  }
+}
